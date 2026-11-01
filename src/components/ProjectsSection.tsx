@@ -286,8 +286,8 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
       title: 'CyberShield Sentinel',
       stack: 'Python · Docker · Network Forensics',
       year: '2025',
-      subtitle: '2025 · 1st Place Winner – Cybersecurity Hackathon',
-      summary: 'Automated network vulnerability scanner and intrusion detection triage system built in 36 hours.',
+      subtitle: '2025 · 1st Place Winner (Team Bug_Slayers) · Supraja Technologies CTF',
+      summary: 'Automated network vulnerability scanner and intrusion detection triage system built during the Supraja Technologies CTF Hackathon.',
       flowNodes: ['packet sniff', 'anomaly detection', 'cve matcher', 'threat score', 'triage alert'],
       failureNodes: ['isolated sandbox', 'quarantine ip', 'static alert'],
       sims: [
@@ -295,24 +295,26 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
         { label: 'Packet flood (DDoS)', note: 'Rate-limiter auto-engaged; suspicious subnet throttled.' }
       ],
       facts: [
-        '1st Place Winner across 40+ engineering teams at competitive hackathon.',
-        'Real-time packet inspection and threat severity categorization.',
-        'Automated vulnerability mitigation recommendations and containerized Docker setup.'
+        '1st Place Winner on official scoreboard (ctfhackathon.great-site.net) as Team Bug_Slayers (223 pts).',
+        'Awarded "Best Student of the Cybersecurity Level-1 CTF Hackathon" (5-star Certificate of Excellence).',
+        'Presented by Santosh Chaluvadi, Founder & CEO of Supraja Technologies, in collaboration with NBKRIST CSE & IEEE SB.',
+        'Real-time packet inspection, threat severity evaluation, and automated Docker sandbox quarantine.'
       ],
-      chips: ['Python', 'Docker', 'Network Forensics', 'REST APIs', 'Spring Boot'],
+      chips: ['Python', 'Docker', 'Network Forensics', 'CTF Security', 'REST APIs', 'Spring Boot'],
+      liveUrl: '/assets/supraja-excellence-cert.jpg',
       githubUrl: 'https://github.com/guru2005-z',
       sourcePath: 'source · cybershield: packet_analyzer.py, threat_eval.py',
-      agentPrompt: 'What did Guravaiah build for the Cybersecurity Hackathon?',
+      agentPrompt: 'What did Guravaiah build for the Supraja Technologies Cybersecurity Hackathon?',
       preview: {
-        tag: 'CYBERSHIELD · 1ST PLACE',
-        domain: 'cybershield.sentinel',
-        heading: 'Automated Network Vulnerability Auditor',
+        tag: 'SUPRAJA TECHNOLOGIES CTF',
+        domain: 'ctfhackathon.great-site.net',
+        heading: '1st Place Winner · Team Bug_Slayers (223 pts)',
         rows: [
-          { k: 'Inspection', v: 'Real-time HTTP Packet Sniffing' },
-          { k: 'Detection', v: 'SQLi, XSS & Zero-Day Anomaly Detection' },
-          { k: 'Response', v: 'Containerized Sandbox Quarantine' }
+          { k: 'Scoreboard', v: 'Rank #1: Bug_Slayers (223 Points)' },
+          { k: 'Award', v: 'Best Student of the Hackathon (5 Stars)' },
+          { k: 'Presented by', v: 'Santosh Chaluvadi, CEO Supraja Tech' }
         ],
-        status: '1st Place Hackathon Winner',
+        status: '1st Place Trophy & Excellence Cert',
         accent: '#ef4444'
       }
     },
@@ -509,16 +511,19 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                   {hoveredProject.id === 'cybershield' && (
                     <div className="flex flex-col gap-1.5">
                       <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-red-400 flex items-center gap-1">🛡️ CYBERSHIELD</span>
-                        <span className="text-neutral-400 text-[9px]">1ST PLACE WINNER</span>
+                        <span className="font-bold text-red-400 flex items-center gap-1">🛡️ SUPRAJA CTF HACKATHON</span>
+                        <span className="text-amber-400 font-bold text-[9px]">★ 1ST PLACE WINNER</span>
                       </div>
                       <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
-                        <span className="text-red-300 font-bold text-[10px]">🚨 0-Day SQLi Vector Flagged</span>
-                        <span className="text-neutral-300 text-[9px]">Severity 8.9 [Quarantined in Sandbox]</span>
+                        <div className="flex items-center justify-between text-[10px]">
+                          <span className="text-emerald-300 font-bold">#1 Bug_Slayers (Scoreboard)</span>
+                          <span className="px-1.5 py-0.2 bg-emerald-500/20 text-emerald-300 rounded font-mono font-bold text-[9px]">223 PTS</span>
+                        </div>
+                        <span className="text-neutral-300 text-[9px]">Best Student Award · Signed by CEO Santosh Chaluvadi</span>
                       </div>
                       <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>Traffic Sniff: 12,480 req/s</span>
-                        <span className="text-red-400">Threat Isolated</span>
+                        <span>ctfhackathon.great-site.net</span>
+                        <span className="text-amber-400 font-bold">5-Star Excellence Cert</span>
                       </div>
                     </div>
                   )}

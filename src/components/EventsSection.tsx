@@ -27,12 +27,17 @@ const itemFadeUp: Variants = {
 export const EventsSection: React.FC = () => {
   const events = [
     {
-      when: 'Jul 2026',
-      title: 'Cybersecurity Hackathon 2025',
-      org: 'Competitive Hackathon',
-      desc: 'Won 1st Place overall across 40+ engineering teams for building CyberShield Sentinel, an automated network vulnerability scanner and intrusion detection tool.',
-      tag: 'won 1st place',
-      tagType: 'won'
+      when: 'Apr 2025',
+      title: 'Supraja Technologies CTF Hackathon',
+      org: 'NBKRIST CSE & IEEE SB',
+      desc: 'Won 1st Place overall (Team: Bug_Slayers, Rank #1 with 223 points on live scoreboard) and awarded "Best Student of the Cybersecurity Level-1 CTF Hackathon" (5-Star Certificate of Excellence) by Santosh Chaluvadi, CEO of Supraja Technologies.',
+      tag: 'won 1st place ★',
+      tagType: 'won',
+      links: [
+        { label: 'Excellence Cert (Best Student)', url: '/assets/supraja-excellence-cert.jpg' },
+        { label: 'Live Scoreboard (#1 Bug_Slayers)', url: '/assets/supraja-scoreboard.jpg' },
+        { label: 'Workshop Cert', url: '/assets/supraja-participation-cert.jpg' }
+      ]
     },
     {
       when: '2026',

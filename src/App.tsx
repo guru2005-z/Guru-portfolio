@@ -24,12 +24,12 @@ export default function App() {
   const [currentMode, setCurrentMode] = useState<'classic' | 'agent'>('classic');
   const [gameTheme, setGameTheme] = useState<GameTheme>('tetris');
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
-  const [selectedCert, setSelectedCert] = useState<'az900' | 'mlsa' | 'infosys'>('az900');
+  const [selectedCert, setSelectedCert] = useState<'az900' | 'mlsa' | 'infosys' | 'supraja'>('az900');
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isArcadeOpen, setIsArcadeOpen] = useState(false);
   const [agentInitialPrompt, setAgentInitialPrompt] = useState<string>('');
 
-  const handleOpenCertModal = (certKey?: 'az900' | 'mlsa' | 'infosys') => {
+  const handleOpenCertModal = (certKey?: 'az900' | 'mlsa' | 'infosys' | 'supraja') => {
     if (certKey) setSelectedCert(certKey);
     setIsCertModalOpen(true);
   };

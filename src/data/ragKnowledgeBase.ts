@@ -88,11 +88,11 @@ export const RAG_KNOWLEDGE_BASE: KnowledgeChunk[] = [
   },
   {
     id: 'hackathon-cybershield',
-    title: 'CyberShield Sentinel - 1st Place Cybersecurity Hackathon Winner',
+    title: 'CyberShield Sentinel - 1st Place & Best Student at Supraja Technologies CTF Hackathon',
     category: 'Hackathon',
-    keywords: ['cybershield', 'sentinel', 'cybersecurity', 'hackathon', '1st place', 'winner', 'vulnerability', 'waf'],
-    content: 'Awarded 1st Place among 45+ teams. Engineered an automated vulnerability detection system analyzing incoming HTTP traffic in real-time to mitigate SQL injection, XSS, and CSRF attacks.',
-    highlight: 'Won 1st Place in Inter-College Cybersecurity Hackathon.'
+    keywords: ['cybershield', 'sentinel', 'cybersecurity', 'hackathon', '1st place', 'winner', 'vulnerability', 'supraja', 'bug_slayers', 'best student', 'santosh chaluvadi', '223'],
+    content: 'Guravaiah Katta won 1st Place overall in the Cybersecurity Level-1 CTF Hackathon conducted by Dept of CSE, NBKRIST in collaboration with IEEE SB & Cyber Security Club in association with Supraja Technologies (April 7–10, 2025). As leader of Team Bug_Slayers, he finished Rank #1 with 223 points on the live scoreboard (ctfhackathon.great-site.net). He was honored with the 5-Star Certificate of Excellence as "Best Student of the Cybersecurity Level-1 CTF Hackathon" awarded by Santosh Chaluvadi (Founder & CEO, Supraja Technologies). During the event, he engineered CyberShield Sentinel for automated vulnerability scanning and intrusion mitigation.',
+    highlight: '1st Place on live scoreboard (Bug_Slayers, 223 pts) & 5-Star Best Student of the Hackathon awarded by CEO Santosh Chaluvadi.'
   },
   {
     id: 'hackathon-medicare',

@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, type Variants } fro
 import { ShieldCheck, Award } from 'lucide-react';
 
 interface EducationSectionProps {
-  onOpenCertModal: (certKey?: 'az900' | 'mlsa' | 'infosys') => void;
+  onOpenCertModal: (certKey?: 'az900' | 'mlsa' | 'infosys' | 'supraja') => void;
 }
 
 const staggerContainer: Variants = {
@@ -40,7 +40,7 @@ interface CertPreviewMeta {
 }
 
 export const EducationSection: React.FC<EducationSectionProps> = ({ onOpenCertModal }) => {
-  const [hoveredCert, setHoveredCert] = useState<'az900' | 'mlsa' | 'infosys' | null>(null);
+  const [hoveredCert, setHoveredCert] = useState<'az900' | 'mlsa' | 'infosys' | 'supraja' | null>(null);
 
   // Smooth mouse follower for floating certificate preview
   const mouseX = useMotionValue(0);
@@ -54,7 +54,7 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ onOpenCertMo
     mouseY.set(e.clientY);
   };
 
-  const certPreviews: Record<'az900' | 'mlsa' | 'infosys', CertPreviewMeta> = {
+  const certPreviews: Record<'az900' | 'mlsa' | 'infosys' | 'supraja', CertPreviewMeta> = {
     az900: {
       title: 'Microsoft Certified: Azure Fundamentals (AZ-900)',
       issuer: 'Microsoft Corporation',
@@ -81,6 +81,15 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ onOpenCertMo
       badge: 'INTERNSHIP COMPLETION',
       badgeBg: 'bg-[#007cc3]',
       tag: 'VERIFIED ON WINGSPAN'
+    },
+    supraja: {
+      title: 'Supraja Technologies CTF Hackathon · Best Student (5★)',
+      issuer: 'Supraja Technologies & NBKRIST CSE',
+      signee: 'Santosh Chaluvadi (Founder & CEO)',
+      image: '/assets/supraja-excellence-cert.jpg',
+      badge: '★ 1ST PLACE & BEST STUDENT',
+      badgeBg: 'bg-emerald-600',
+      tag: 'TEAM BUG_SLAYERS (#1 - 223 PTS)'
     }
   };
 
@@ -279,6 +288,32 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ onOpenCertMo
               </div>
               <span className="font-mono text-xs text-[#007cc3] group-hover:underline shrink-0">
                 View ↗
+              </span>
+            </div>
+
+            {/* Clickable Supraja Technologies CTF Hackathon Card */}
+            <div
+              onMouseEnter={() => setHoveredCert('supraja')}
+              onMouseLeave={() => setHoveredCert(null)}
+              onClick={() => onOpenCertModal('supraja')}
+              className="p-4 rounded-xl border border-emerald-500/40 bg-[#f0fdf4] hover:border-emerald-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between gap-3 group"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600 shrink-0 font-bold">
+                  🏆
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-[#161514] group-hover:text-emerald-700 transition-colors flex items-center gap-1.5">
+                    <span>Cybersecurity CTF Hackathon · 1st Place</span>
+                    <span className="px-1.5 py-0.5 rounded text-[10px] font-mono uppercase bg-emerald-200 text-emerald-900 font-bold">Best Student (5★)</span>
+                  </h4>
+                  <span className="text-xs font-mono text-[#6e6b63]">
+                    Supraja Technologies & NBKRIST · Team Bug_Slayers (#1 on Board)
+                  </span>
+                </div>
+              </div>
+              <span className="font-mono text-xs text-emerald-700 group-hover:underline shrink-0">
+                View Proof ↗
               </span>
             </div>
 

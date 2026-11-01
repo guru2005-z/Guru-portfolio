@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { X, ShieldCheck, Download, Award, Briefcase, ExternalLink } from 'lucide-react';
+import { X, ShieldCheck, Download, Award, Briefcase, ExternalLink, Trophy, FileText } from 'lucide-react';
 
 interface CertModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultCert?: 'az900' | 'mlsa' | 'infosys';
+  defaultCert?: 'az900' | 'mlsa' | 'infosys' | 'supraja';
 }
 
 export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCert = 'az900' }) => {
-  const [activeTab, setActiveTab] = useState<'az900' | 'mlsa' | 'infosys'>(defaultCert);
+  const [activeTab, setActiveTab] = useState<'az900' | 'mlsa' | 'infosys' | 'supraja'>(defaultCert);
+  const [suprajaView, setSuprajaView] = useState<'excellence' | 'scoreboard' | 'participation'>('excellence');
 
   if (!isOpen) return null;
 
@@ -18,10 +19,10 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
         
         {/* Tab Switcher & Close Button */}
         <div className="flex items-center justify-between border-b border-[#e6e3da] pb-3 gap-2">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <button
               onClick={() => setActiveTab('az900')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'az900'
                   ? 'bg-[#161514] text-white shadow-xs'
                   : 'bg-[#f0ede6] text-[#6e6b63] hover:text-[#161514]'
@@ -32,7 +33,7 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
             </button>
             <button
               onClick={() => setActiveTab('mlsa')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'mlsa'
                   ? 'bg-[#161514] text-white shadow-xs'
                   : 'bg-[#f0ede6] text-[#6e6b63] hover:text-[#161514]'
@@ -43,14 +44,25 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
             </button>
             <button
               onClick={() => setActiveTab('infosys')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'infosys'
                   ? 'bg-[#161514] text-white shadow-xs'
                   : 'bg-[#f0ede6] text-[#6e6b63] hover:text-[#161514]'
               }`}
             >
               <Briefcase className="w-3.5 h-3.5 text-[#007cc3]" />
-              <span>Infosys Internship</span>
+              <span>Infosys</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('supraja')}
+              className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+                activeTab === 'supraja'
+                  ? 'bg-[#161514] text-white shadow-xs'
+                  : 'bg-[#f0ede6] text-[#6e6b63] hover:text-[#161514]'
+              }`}
+            >
+              <Trophy className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Supraja CTF ★</span>
             </button>
           </div>
 
@@ -64,7 +76,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
 
         {activeTab === 'az900' && (
           <>
-            {/* Azure AZ-900 Header */}
             <div>
               <h3 className="font-bold text-base text-[#161514]">
                 Microsoft Certified: Azure Fundamentals (AZ-900)
@@ -74,7 +85,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               </p>
             </div>
 
-            {/* Certificate Image */}
             <div className="rounded-lg border border-[#e6e3da] bg-[#0c0c0c] p-2 flex items-center justify-center overflow-hidden">
               <img
                 src="/assets/aistudio/image_dedf00ae.png"
@@ -83,7 +93,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               />
             </div>
 
-            {/* Verification Meta */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 p-3 bg-[#f9f8f5] border border-[#e6e3da] rounded-lg text-xs font-mono">
               <div>
                 <span className="text-[#6e6b63] block text-[11px]">Candidate:</span>
@@ -99,7 +108,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               </div>
             </div>
 
-            {/* Actions */}
             <div className="flex items-center justify-between pt-2 border-t border-[#e6e3da]">
               <span className="text-xs font-mono text-[#16a34a] flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-[#16a34a]"></span>
@@ -127,7 +135,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
 
         {activeTab === 'mlsa' && (
           <>
-            {/* MLSA Header */}
             <div>
               <h3 className="font-bold text-base text-[#161514] flex items-center gap-2">
                 <span>Microsoft Student Ambassadors | 2026</span>
@@ -140,7 +147,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               </p>
             </div>
 
-            {/* Certificate Image */}
             <div className="rounded-lg border border-[#e6e3da] bg-[#ffffff] p-2 flex items-center justify-center overflow-hidden shadow-inner">
               <img
                 src="/assets/mlsa-certificate.jpg"
@@ -149,7 +155,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               />
             </div>
 
-            {/* Verification Meta */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 p-3 bg-[#f9f8f5] border border-[#e6e3da] rounded-lg text-xs font-mono">
               <div>
                 <span className="text-[#6e6b63] block text-[11px]">Presented to:</span>
@@ -165,12 +170,10 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               </div>
             </div>
 
-            {/* Recognition note */}
             <p className="text-xs text-[#6e6b63] leading-relaxed">
               "In recognition of your hard work and dedication as a member of the Student Ambassadors community." Signed by <strong className="text-[#161514]">Pablo Veramendi</strong>, Global Director | Microsoft Student Ambassadors.
             </p>
 
-            {/* Actions */}
             <div className="flex items-center justify-between pt-2 border-t border-[#e6e3da]">
               <span className="text-xs font-mono text-[#0078D4] flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-[#0078D4]"></span>
@@ -198,7 +201,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
 
         {activeTab === 'infosys' && (
           <>
-            {/* Infosys Header */}
             <div>
               <h3 className="font-bold text-base text-[#161514] flex items-center gap-2">
                 <span>Infosys Springboard: Certificate of Completion</span>
@@ -211,7 +213,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               </p>
             </div>
 
-            {/* Certificate Image */}
             <div className="rounded-lg border border-[#e6e3da] bg-[#ffffff] p-2 flex items-center justify-center overflow-hidden shadow-inner">
               <img
                 src="/assets/infosys-certificate.jpg"
@@ -220,7 +221,6 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               />
             </div>
 
-            {/* Verification Meta */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-3 bg-[#f9f8f5] border border-[#e6e3da] rounded-lg text-xs font-mono">
               <div>
                 <span className="text-[#6e6b63] block text-[11px]">Presented to:</span>
@@ -240,12 +240,10 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
               </div>
             </div>
 
-            {/* Recognition note */}
             <p className="text-xs text-[#6e6b63] leading-relaxed">
               "For actively participating and completing the mandatory assignment related to Internship 6.0 (B 11): Intelligent Forecasting System for Consumer Behavior and Industry Trends conducted from December 22, 2025 to February 25, 2026." Signed by <strong className="text-[#161514]">Satheesha B. Nanjappa</strong>, Senior Vice President and Head, Education, Training and Assessment, Infosys Limited.
             </p>
 
-            {/* Actions */}
             <div className="flex items-center justify-between pt-2 border-t border-[#e6e3da]">
               <a
                 href="https://verify.onwingspan.com"
@@ -264,6 +262,131 @@ export const CertModal: React.FC<CertModalProps> = ({ isOpen, onClose, defaultCe
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Certificate</span>
+                </a>
+                <button
+                  onClick={onClose}
+                  className="px-3 py-1.5 rounded bg-[#161514] text-white text-xs font-mono hover:bg-[#333] transition-colors"
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+
+        {activeTab === 'supraja' && (
+          <>
+            {/* Supraja Header */}
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-base text-[#161514] flex items-center gap-2">
+                  <span>Supraja Technologies CTF Hackathon</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
+                    ★ 1st Place & Best Student
+                  </span>
+                </h3>
+              </div>
+              <p className="text-xs text-[#6e6b63] font-mono">
+                Awarded to Katta Guravaiah (Ref: 23KB1A0597) · Presented April 10, 2025
+              </p>
+            </div>
+
+            {/* Sub-view toggle (Excellence Cert / Scoreboard Proof / Participation) */}
+            <div className="flex items-center gap-2 border-b border-[#e6e3da] pb-2 font-mono text-xs">
+              <button
+                onClick={() => setSuprajaView('excellence')}
+                className={`px-2.5 py-1 rounded transition-colors ${
+                  suprajaView === 'excellence'
+                    ? 'bg-[#161514] text-white font-bold'
+                    : 'bg-[#f0ede6] text-[#6e6b63] hover:text-[#161514]'
+                }`}
+              >
+                1. Excellence Certificate
+              </button>
+              <button
+                onClick={() => setSuprajaView('scoreboard')}
+                className={`px-2.5 py-1 rounded transition-colors ${
+                  suprajaView === 'scoreboard'
+                    ? 'bg-[#161514] text-white font-bold'
+                    : 'bg-[#f0ede6] text-[#6e6b63] hover:text-[#161514]'
+                }`}
+              >
+                2. Live Scoreboard (Bug_Slayers #1)
+              </button>
+              <button
+                onClick={() => setSuprajaView('participation')}
+                className={`px-2.5 py-1 rounded transition-colors ${
+                  suprajaView === 'participation'
+                    ? 'bg-[#161514] text-white font-bold'
+                    : 'bg-[#f0ede6] text-[#6e6b63] hover:text-[#161514]'
+                }`}
+              >
+                3. Workshop Cert
+              </button>
+            </div>
+
+            {/* Display active image */}
+            <div className="rounded-lg border border-[#e6e3da] bg-[#ffffff] p-2 flex items-center justify-center overflow-hidden shadow-inner">
+              {suprajaView === 'excellence' && (
+                <img
+                  src="/assets/supraja-excellence-cert.jpg"
+                  alt="Certificate of Excellence - Best Student of the Cybersecurity Level-1 CTF Hackathon"
+                  className="max-h-[380px] w-auto object-contain rounded"
+                />
+              )}
+              {suprajaView === 'scoreboard' && (
+                <img
+                  src="/assets/supraja-scoreboard.jpg"
+                  alt="CTF Hackathon Scoreboard showing Bug_Slayers at Rank 1 with 223 points"
+                  className="max-h-[380px] w-auto object-contain rounded"
+                />
+              )}
+              {suprajaView === 'participation' && (
+                <img
+                  src="/assets/supraja-participation-cert.jpg"
+                  alt="Certificate of Participation - Ethical Hacking & Cybersecurity Workshop & Hackathon"
+                  className="max-h-[380px] w-auto object-contain rounded"
+                />
+              )}
+            </div>
+
+            {/* Verification Meta */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-3 bg-[#f9f8f5] border border-[#e6e3da] rounded-lg text-xs font-mono">
+              <div>
+                <span className="text-[#6e6b63] block text-[11px]">Award:</span>
+                <span className="font-semibold text-[#161514]">Best Student (5★)</span>
+              </div>
+              <div>
+                <span className="text-[#6e6b63] block text-[11px]">Team on Board:</span>
+                <span className="font-semibold text-emerald-600">Bug_Slayers (Rank #1)</span>
+              </div>
+              <div>
+                <span className="text-[#6e6b63] block text-[11px]">Score:</span>
+                <span className="font-semibold text-[#161514]">223 Points</span>
+              </div>
+              <div>
+                <span className="text-[#6e6b63] block text-[11px]">Awarded by:</span>
+                <span className="font-semibold text-[#161514]">Santosh Chaluvadi (CEO)</span>
+              </div>
+            </div>
+
+            <p className="text-xs text-[#6e6b63] leading-relaxed">
+              "Best Student of the Cybersecurity Level-1 CTF Hackathon" conducted by Dept. of CSE, N.B.K.R. Institute of Science & Technology in collaboration with IEEE-SB-NBKRIST & Cyber Security Club in association with Supraja Technologies (April 7–10, 2025). Awarded by <strong className="text-[#161514]">Santosh Chaluvadi</strong>, Founder & CEO, Supraja Technologies.
+            </p>
+
+            <div className="flex items-center justify-between pt-2 border-t border-[#e6e3da]">
+              <span className="text-xs font-mono text-emerald-700 flex items-center gap-1 font-semibold">
+                <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+                Official Verified 1st Place & Best Student
+              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href="/assets/supraja-excellence-cert.jpg"
+                  download="Katta_Guravaiah_Supraja_Excellence_Certificate.jpg"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#d5d1c5] bg-[#ffffff] hover:bg-[#f0ede6] text-xs font-mono text-[#161514] transition-colors"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download Cert</span>
                 </a>
                 <button
                   onClick={onClose}

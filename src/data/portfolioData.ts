@@ -289,6 +289,16 @@ export const PORTFOLIO_DATA = {
       badgeText: "Verified on Wingspan • Signed by Satheesha B. Nanjappa"
     },
     {
+      id: "supraja-ctf-excellence",
+      title: "Certificate of Excellence: Best Student of Cybersecurity CTF Hackathon",
+      issuer: "Supraja Technologies & NBKRIST",
+      date: "April 10, 2025",
+      credentialId: "23KB1A0597",
+      imageUrl: "/assets/supraja-excellence-cert.jpg",
+      description: "Awarded 5-Star Certificate of Excellence as Best Student of the Cybersecurity Level-1 CTF Hackathon. Team Bug_Slayers finished Rank #1 with 223 points on live scoreboard. Awarded by Santosh Chaluvadi (Founder & CEO, Supraja Technologies).",
+      badgeText: "1st Place Winner • Best Student Award"
+    },
+    {
       id: "kaggle-genai-2025",
       title: "Kaggle GenAI 2025 Agents Intensive Capstone",
       issuer: "Kaggle & Google",
@@ -306,8 +316,8 @@ export const PORTFOLIO_DATA = {
     },
     {
       icon: "Trophy",
-      title: "1st Place – Cybersecurity Hackathon",
-      description: "Constructed CyberShield Sentinel in 36 hours, securing first prize across 40+ competitor teams."
+      title: "1st Place & Best Student – Supraja CTF Hackathon",
+      description: "Led Team Bug_Slayers to Rank #1 (223 points) on the live scoreboard at the Cybersecurity Level-1 CTF Hackathon. Awarded 5-star Certificate of Excellence by Santosh Chaluvadi, CEO of Supraja Technologies."
     },
     {
       icon: "Award",
