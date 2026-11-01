@@ -44,7 +44,7 @@ export const WorkSection: React.FC = () => {
             <span>Work</span>
           </h2>
           <span className="font-mono text-xs text-[#6e6b63]">
-            2 roles · Freelance & Enterprise Internship
+            3 roles · Freelance, Enterprise Internship & Student Branch Leadership
           </span>
         </motion.div>
 
@@ -168,6 +168,77 @@ export const WorkSection: React.FC = () => {
 
             <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#f0ede6]">
               {['Python', 'Streamlit', 'Scikit-learn', 'NLP', 'Machine Learning', 'RAG', 'Pandas'].map((tech) => (
+                <span key={tech} className="px-2 py-0.5 rounded bg-[#f0ede6] text-[11px] font-mono text-[#161514]">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </motion.li>
+
+          {/* IEEE Student Branch & HackSpirit */}
+          <motion.li variants={itemFadeUp} className="p-5 sm:p-6 rounded-xl border border-[#d5d1c5] bg-[#ffffff] shadow-xs relative flex flex-col gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e6e3da] pb-3">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-xs text-[#6e6b63]">2024 – 2026</span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-[#161514] text-white font-bold">
+                  leadership
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-[#e0f2fe] text-[#0369a1] font-bold">
+                  vice chair
+                </span>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://nbkristieee.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#d41514] hover:underline"
+                >
+                  <span>Live: nbkristieee.in</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a
+                  href="https://hackspirit.fun"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#0369a1] hover:underline"
+                >
+                  <span>Live: hackspirit.fun</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-lg text-[#161514]">
+                IEEE Student Branch — NBKRIST
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-[#6e6b63] font-mono mt-0.5">
+                Vice Chairperson & Lead Web Architect
+              </p>
+            </div>
+
+            <p className="text-sm text-[#161514] leading-relaxed">
+              Serving as <mark>Vice Chairperson</mark>, architected and deployed two live production websites: the institutional student branch portal (<mark>nbkristieee.in</mark>) and the campus hackathon platform (<mark>hackspirit.fun</mark>).
+            </p>
+
+            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-[#6e6b63]">
+              <li className="flex items-start gap-2">
+                <span className="text-[#161514] mt-1">•</span>
+                <span><strong>nbkristieee.in:</strong> Developed the complete official web portal managing student memberships, executive committee directories, and technical workshop archives.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#161514] mt-1">•</span>
+                <span><strong>hackspirit.fun:</strong> Designed and launched the full-featured hackathon event hub handling team registrations, track breakdowns, live schedules, and sponsor showcases.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#161514] mt-1">•</span>
+                <span>Spearheaded tech symposiums, code sprints, and hands-on developer workshops across engineering departments.</span>
+              </li>
+            </ul>
+
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#f0ede6]">
+              {['React', 'TypeScript', 'Tailwind CSS', 'Web Architecture', 'Event Platforms', 'Production Deployment'].map((tech) => (
                 <span key={tech} className="px-2 py-0.5 rounded bg-[#f0ede6] text-[11px] font-mono text-[#161514]">
                   {tech}
                 </span>

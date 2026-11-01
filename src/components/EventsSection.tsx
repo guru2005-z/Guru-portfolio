@@ -43,12 +43,16 @@ export const EventsSection: React.FC = () => {
       tagType: 'won'
     },
     {
-      when: '2025 – 2026',
-      title: 'IEEE Student Branch',
+      when: '2024 – 2026',
+      title: 'IEEE Student Branch & HackSpirit',
       org: 'NBKRIST',
-      desc: 'Served as IEEE Vice Chairperson, organizing campus developer workshops, hackathons, and technical symposiums.',
+      desc: 'Vice Chairperson; engineered and launched official student branch portal (nbkristieee.in) and university hackathon platform (hackspirit.fun).',
       tag: 'vice chairperson',
-      tagType: 'built'
+      tagType: 'built',
+      links: [
+        { label: 'nbkristieee.in', url: 'https://nbkristieee.in' },
+        { label: 'hackspirit.fun', url: 'https://hackspirit.fun' }
+      ]
     },
     {
       when: '2025',
@@ -114,6 +118,22 @@ export const EventsSection: React.FC = () => {
                   <p className="text-xs sm:text-sm text-[#6e6b63] max-w-xl leading-relaxed">
                     {ev.desc}
                   </p>
+                  {'links' in ev && Array.isArray((ev as any).links) && (
+                    <div className="flex flex-wrap items-center gap-3 pt-1">
+                      {((ev as any).links as { label: string; url: string }[]).map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs font-mono text-[#d41514] hover:underline"
+                        >
+                          <span>{link.label}</span>
+                          <span className="text-[10px]">↗</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
 

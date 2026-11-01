@@ -296,7 +296,7 @@ export const PORTFOLIO_DATA = {
     {
       icon: "Users",
       title: "IEEE Vice Chairperson – NBKRIST",
-      description: "Led university IEEE student branch, organizing tech symposiums, code sprints, and developer workshops."
+      description: "Vice Chairperson of IEEE Student Branch. Engineered and deployed two live production websites: nbkristieee.in (official IEEE branch portal) and hackspirit.fun (campus hackathon platform)."
     },
     {
       icon: "Globe",
@@ -333,6 +333,20 @@ export const PORTFOLIO_DATA = {
         "Gained direct industry experience evaluating AI solutions for production enterprise use cases."
       ],
       tech: ["Python", "Streamlit", "NLP", "Machine Learning", "Scikit-learn", "Pandas"]
+    },
+    {
+      role: "Vice Chairperson & Lead Web Developer",
+      company: "IEEE Student Branch – NBKRIST",
+      location: "NBKRIST, Vidyanagar",
+      period: "2024 – 2026",
+      liveLink: "https://nbkristieee.in",
+      secondaryLiveLink: "https://hackspirit.fun",
+      bullets: [
+        "Served as Vice Chairperson of the university IEEE Student Branch, spearheading campus-wide developer workshops and hackathons.",
+        "Engineered and shipped the official IEEE Student Branch portal (nbkristieee.in) for member directories and event archives.",
+        "Architected and deployed the HackSpirit hackathon platform (hackspirit.fun), managing team registrations and problem tracks."
+      ],
+      tech: ["React", "TypeScript", "Tailwind CSS", "Web Architecture", "Event Platforms", "Vercel"]
     }
   ]
 };

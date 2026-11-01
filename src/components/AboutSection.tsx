@@ -276,7 +276,26 @@ export const AboutSection: React.FC = () => {
                 <span>Gully United</span>
                 <span className="font-mono text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
               </a>{' '}
-              (a commercial cricket venue reservation platform), building open-source projects, and exploring distributed cloud systems on Microsoft Azure.
+              (a commercial cricket venue reservation platform), building open-source projects, and exploring distributed cloud systems on Microsoft Azure. As IEEE Vice Chairperson at NBKRIST, I engineered and deployed two production platforms:{' '}
+              <a
+                href="https://nbkristieee.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#161514] font-semibold underline underline-offset-4 hover:text-[#d41514] inline-flex items-center gap-0.5 group"
+              >
+                <span>nbkristieee.in</span>
+                <span className="font-mono text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+              </a>{' '}
+              and{' '}
+              <a
+                href="https://hackspirit.fun"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#161514] font-semibold underline underline-offset-4 hover:text-[#0369a1] inline-flex items-center gap-0.5 group"
+              >
+                <span>hackspirit.fun</span>
+                <span className="font-mono text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+              </a>.
             </p>
 
             {/* Key-Value Definition Cards with Mouse-Tracking Spotlight */}

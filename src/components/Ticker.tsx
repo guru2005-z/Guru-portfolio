@@ -11,7 +11,7 @@ export const Ticker: React.FC = () => {
     { tag: '8.17 CGPA', title: 'B.Tech CSE NBKRIST' },
     { tag: 'AI forecaster', title: 'Consumer Sentiment & RAG Pinecone' },
     { tag: 'mini-game break', title: '🐍 Cyber Snake (Recommended) or 🟡 Dev Pac-Man' },
-    { tag: 'IEEE leader', title: 'Vice Chairperson, NBKRIST' },
+    { tag: 'IEEE leader', title: 'Vice Chairperson (nbkristieee.in & hackspirit.fun)' },
     { tag: 'ambassador', title: 'Microsoft Learn Student Ambassador' },
   ];
 

@@ -71,6 +71,22 @@ export const RAG_KNOWLEDGE_BASE: KnowledgeChunk[] = [
     highlight: 'Infosys Springboard Virtual Internship building AI sentiment forecasting pipeline live on Streamlit.'
   },
   {
+    id: 'nbkrist-ieee-portal',
+    title: 'NBKRIST IEEE Official Portal (nbkristieee.in) - Vice Chair Web Development',
+    category: 'Project',
+    keywords: ['nbkristieee', 'nbkristieee.in', 'ieee', 'nbkrist', 'vice chair', 'chairperson', 'portal', 'website', 'leadership'],
+    content: 'Guravaiah Katta served as the Vice Chairperson of the IEEE Student Branch at NBKRIST. In this leadership role, he designed, developed, and deployed the official university branch portal live at https://nbkristieee.in. The platform centralizes student memberships, executive committee directories, upcoming technical workshops, and resource archives.',
+    highlight: 'Official IEEE Student Branch portal live at https://nbkristieee.in built by Guravaiah as Vice Chair.'
+  },
+  {
+    id: 'hackspirit-hackathon-platform',
+    title: 'HackSpirit Hackathon Platform (hackspirit.fun) - Vice Chair Web Development',
+    category: 'Project',
+    keywords: ['hackspirit', 'hackspirit.fun', 'hackathon', 'competition', 'vice chair', 'chairperson', 'website', 'portal', 'fun'],
+    content: 'Guravaiah Katta developed and launched the official website for HackSpirit at https://hackspirit.fun. Built as Vice Chairperson and lead web developer, the platform manages hackathon team registrations, challenge tracks, live countdowns, rules, judging rubrics, and sponsor showcases.',
+    highlight: 'Production hackathon web platform live at https://hackspirit.fun built by Guravaiah as Vice Chair.'
+  },
+  {
     id: 'hackathon-cybershield',
     title: 'CyberShield Sentinel - 1st Place Cybersecurity Hackathon Winner',
     category: 'Hackathon',

@@ -236,7 +236,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   </div>
                   <div className="p-3 rounded-lg bg-[#141414] border border-[#222222] text-[#CDCBCA]">
                     <strong className="text-white block font-display">IEEE Vice Chairperson — NBKRIST</strong>
-                    <span className="text-[#8E8D8C] font-mono text-[11px]">Student branch leadership & tech symposiums</span>
+                    <span className="text-[#8E8D8C] font-mono text-[11px]">Web architect (nbkristieee.in & hackspirit.fun) & student branch leader</span>
                   </div>
                 </div>
               </div>
