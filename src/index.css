@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #f9f8f5;
+    --bg-elevated: #ffffff;
+    --border: #e6e3da;
+    --border-strong: #d5d1c5;
+    --text: #161514;
+    --text-muted: #6e6b63;
+    --text-faint: #9c988d;
+    --accent: #d41514;
+    --accent-dark: #b0100f;
+    --accent-tint: rgba(212, 21, 20, 0.08);
+    --grid-line: rgba(22, 21, 20, 0.04);
+    --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  code, pre, .mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Paper Grid Background matching mohammad-rizwan.tech */
+.grid-bg {
+  background-color: #f9f8f5;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+/* Intro Curtain Animation matching mohammad-rizwan.tech */
+@keyframes letterFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes barGrow {
+  0% { width: 0%; }
+  60% { width: 70%; }
+  100% { width: 100%; }
+}
+
+@keyframes curtainDismiss {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+.intro-letter {
+  display: inline-block;
+  opacity: 0;
+  animation: letterFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.intro-curtain {
+  animation: curtainDismiss 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.intro-progress-bar {
+  animation: barGrow 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Ticker Animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 42s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Marquee Animations */
+@keyframes marquee-ltr {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-ltr {
+  display: flex;
+  width: max-content;
+  animation: marquee-ltr 48s linear infinite;
+}
+
+.animate-marquee-rtl {
+  display: flex;
+  width: max-content;
+  animation: marquee-rtl 52s linear infinite;
+}
+
+/* Highlight mark styling */
+mark {
+  background-color: #fef08a;
+  color: #1a1a1a;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Flowchart Nodes in Project Drawers */
+.flow-node {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #d5d1c5;
+  background: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #1a1a1a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.flow-node.active-success {
+  border-color: #16a34a;
+  background-color: #f0fdf4;
+  color: #166534;
+  box-shadow: 0 0 12px rgba(22, 163, 74, 0.2);
+}
+
+.flow-node.active-fail {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+  color: #991b1b;
+  box-shadow: 0 0 12px rgba(220, 38, 38, 0.2);
+}
+
+/* Data Packet Pulsing Animation through Arrows */
+@keyframes pulseFlow {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+    color: #161514;
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+}
+
+.flow-arrow-pulse {
+  display: inline-block;
+  animation: pulseFlow 1.8s ease-in-out infinite;
+}
+
+/* Floating Interactive Tetromino Shapes */
+@keyframes floatTetro {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+.animate-float-tetro {
+  animation: floatTetro 5s ease-in-out infinite;
+}
+
+/* Cursor Peek Badge Tooltip */
+.peek-badge {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  transform: translate(-50%, -100%) translateY(-14px);
+  transition: opacity 0.15s ease, transform 0.1s ease-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f9f8f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #d5d1c5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9c988d;
+}
+
+/* mohammad-rizwan.tech Cursor Trail & Click Ripple FX */
+.trail {
+  pointer-events: none;
+  z-index: 99990;
+  background: #161514;
+  width: 6px;
+  height: 6px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 1px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.trail.on {
+  background: #f59e0b;
+}
+
+.click-ripple {
+  pointer-events: none;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1.5px solid #161514;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.click-ripple.on {
+  border-color: #f59e0b;
+}
+
+.click-spark {
+  pointer-events: none;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: #161514;
+  border-radius: 1px;
+}
+.click-spark.on {
+  background: #f59e0b;
+}
+
+/* Hide default cursor on desktop when custom precision reticle is active */
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor-enabled,
+  html.custom-cursor-enabled body,
+  html.custom-cursor-enabled a,
+  html.custom-cursor-enabled button,
+  html.custom-cursor-enabled [role="button"],
+  html.custom-cursor-enabled [role="tab"] {
+    cursor: none !important;
+  }
+
+  html.custom-cursor-enabled input,
+  html.custom-cursor-enabled textarea,
+  html.custom-cursor-enabled [contenteditable="true"] {
+    cursor: text !important;
+  }
+}
