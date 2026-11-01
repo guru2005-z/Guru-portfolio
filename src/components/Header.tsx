@@ -174,6 +174,11 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Sparkles className="w-3 h-3 text-[#facc15]" />
               <span>Agent</span>
+              <span className={`text-[9px] px-1 py-0.2 rounded font-mono font-bold uppercase ${
+                currentMode === 'agent' ? 'bg-[#16a34a] text-white' : 'bg-[#e2f7e8] text-[#16a34a]'
+              }`}>
+                RAG
+              </span>
             </button>
           </div>
         </div>

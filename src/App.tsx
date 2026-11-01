@@ -115,6 +115,27 @@ export default function App() {
         isOpen={isResumeModalOpen}
         onClose={() => setIsResumeModalOpen(false)}
       />
+
+      {/* Floating RAG Agent Quick Access Button */}
+      {currentMode === 'classic' && (
+        <button
+          onClick={() => {
+            setCurrentMode('agent');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="fixed bottom-6 right-6 z-30 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#161514] hover:bg-[#302e2b] text-white shadow-lg hover:shadow-xl transition-all duration-200 border border-[#403e3a] cursor-pointer group hover:scale-105"
+          title="Chat with Guravaiah's RAG-grounded AI Agent"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16a34a] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#16a34a]" />
+          </span>
+          <span className="font-mono text-xs font-medium tracking-tight">Ask RAG Agent</span>
+          <span className="text-[10px] bg-[#16a34a] text-white px-1.5 py-0.2 rounded font-mono font-bold uppercase">
+            Live
+          </span>
+        </button>
+      )}
     </div>
   );
 }

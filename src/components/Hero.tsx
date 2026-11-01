@@ -257,12 +257,13 @@ export const Hero: React.FC<HeroProps> = ({
                 transform: `translate3d(${px * 4}px, ${py * 2}px, 0)`
               }}
             >
-              {/* Talk to my agent */}
+              {/* Talk to my RAG agent */}
               <button
                 onClick={onOpenAgent}
                 className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#161514] hover:bg-[#302e2b] text-white text-xs sm:text-sm font-medium transition-all shadow-xs hover:shadow-md cursor-pointer group"
               >
-                <span>Talk to my agent</span>
+                <Sparkles className="w-3.5 h-3.5 text-[#facc15]" />
+                <span>Talk to my RAG agent</span>
                 <span className="font-mono text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
               </button>
 
@@ -341,8 +342,9 @@ export const Hero: React.FC<HeroProps> = ({
                     <span className="w-2 h-2 rounded-full bg-[#16a34a] animate-ping" />
                     <span className="font-semibold text-[#161514] tracking-wider">DEV_NODE // ONLINE</span>
                   </div>
-                  <span className="text-[#9c988d] bg-[#f4f2ec] px-1.5 py-0.5 rounded border border-[#e6e3da]">
-                    {gameTheme.toUpperCase()} MATRIX
+                  <span className="text-[#16a34a] bg-[#f0fdf4] px-1.5 py-0.5 rounded border border-[#bbf7d0] font-medium flex items-center gap-1">
+                    <Sparkles className="w-2.5 h-2.5" />
+                    <span>RAG AGENT ONLINE</span>
                   </span>
                 </div>
 

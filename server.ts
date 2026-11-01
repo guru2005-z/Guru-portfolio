@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
+import { RAG_KNOWLEDGE_BASE, retrieveRelevantKnowledge } from './src/data/ragKnowledgeBase';
 
 dotenv.config();
 
@@ -41,8 +42,9 @@ Key Facts about Guravaiah Katta:
 
 Tone: Ultra-knowledgeable, professional, crisp, engineering-minded, and friendly. Answer user queries directly, referencing his specific technical architectures where appropriate.`;
 
-// API endpoint for multi-turn Gemini chat
+// API endpoint for multi-turn RAG-grounded chat
 app.post('/api/chat', async (req: Request, res: Response) => {
+  const startTime = Date.now();
   try {
     const { messages, message } = req.body;
     const userPrompt = message || (messages && messages[messages.length - 1]?.content);
@@ -51,59 +53,121 @@ app.post('/api/chat', async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Message is required' });
     }
 
+    // Step 1: Execute in-memory RAG retrieval over Guravaiah's portfolio knowledge index
+    const retrieved = retrieveRelevantKnowledge(userPrompt, 3);
+    const retrievalLatency = `${Date.now() - startTime}ms`;
+
+    const ragContextText = retrieved
+      .map((r, i) => `[Source ${i + 1} - ${r.chunk.title} (${r.chunk.category})]:\n${r.chunk.content}`)
+      .join('\n\n');
+
+    let reply = '';
+    let isAIGenerated = false;
+
     if (aiClient) {
-      // Build conversation history for Google GenAI
-      const chatHistory = Array.isArray(messages) && messages.length > 1
-        ? messages.slice(0, -1).map((m: { role: string; content: string }) => ({
-            role: m.role === 'user' ? 'user' : 'model',
-            parts: [{ text: m.content }]
-          }))
-        : [];
+      try {
+        const chatHistory = Array.isArray(messages) && messages.length > 1
+          ? messages.slice(0, -1).map((m: { role: string; content: string }) => ({
+              role: m.role === 'user' ? 'user' : 'model',
+              parts: [{ text: m.content }]
+            }))
+          : [];
 
-      const chat = aiClient.chats.create({
-        model: 'gemini-3.8-flash',
-        config: {
-          systemInstruction: SYSTEM_INSTRUCTION,
-          temperature: 0.7,
-        },
-        history: chatHistory
-      });
+        const dynamicSystemInstruction = `${SYSTEM_INSTRUCTION}
 
-      // Wrap in a 4000ms timeout race so clients never hang
-      const timeoutPromise = new Promise<{ text: string }>((_, reject) =>
-        setTimeout(() => reject(new Error('AI response timed out')), 4000)
-      );
+=== RETRIEVED KNOWLEDGE CONTEXT ===
+Ground your response accurately in these retrieved facts:
+${ragContextText}
 
-      const result = await Promise.race([
-        chat.sendMessage({ message: userPrompt }),
-        timeoutPromise
-      ]) as { text?: string };
+Rules:
+1. Answer the user query clearly and accurately using the retrieved context.
+2. If relevant, cite facts or live links directly (e.g. Gully United at https://gully-united-xlv.vercel.app/).
+3. Be professional, direct, and highlight Guravaiah's strengths.`;
 
-      const reply = result.text || "I'd be glad to share more details about Guravaiah's work or connect you directly via email at kattaguravaiah00@gmail.com.";
-      return res.json({ reply });
-    } else {
-      // Intelligent fallback when API key is not present in local test
-      const lower = userPrompt.toLowerCase();
-      let fallback = "Guravaiah Katta is a Full-Stack Software Engineer with strong expertise in Java, Spring Boot, React, and PostgreSQL. You can email him at kattaguravaiah00@gmail.com or explore his live freelance app Gully United at https://gully-united-xlv.vercel.app/!";
-      
-      if (lower.includes('project') || lower.includes('gully') || lower.includes('freelance')) {
-        fallback = "Guravaiah recently built 'Gully United' (live at https://gully-united-xlv.vercel.app/), a full-stack cricket ground booking system using Spring Boot, React, PostgreSQL, and Razorpay with atomic double-booking prevention and QR tickets. He also created KhetConnect and an AI Consumer Sentiment Forecaster with RAG and Pinecone!";
-      } else if (lower.includes('skill') || lower.includes('tech') || lower.includes('stack')) {
-        fallback = "Guravaiah's core tech stack includes Java (Spring Boot, Spring Security, JPA/Hibernate), React, TypeScript, PostgreSQL, Python (NLP, Scikit-learn), and Microsoft Azure (he is AZ-900 certified).";
-      } else if (lower.includes('hire') || lower.includes('contact') || lower.includes('email') || lower.includes('reach')) {
-        fallback = "You can reach Guravaiah directly via email at kattaguravaiah00@gmail.com, by phone at +91-9491501919, or via LinkedIn at https://www.linkedin.com/in/guravaiah-katta/. He typically responds within a few hours!";
-      } else if (lower.includes('resume') || lower.includes('cv')) {
-        fallback = "Guravaiah's official resume is available for one-click download directly from the top navigation bar or the hero section (file: Guravaiah_Katta_Resume.pdf).";
+        const chat = aiClient.chats.create({
+          model: 'gemini-3.8-flash',
+          config: {
+            systemInstruction: dynamicSystemInstruction,
+            temperature: 0.6,
+          },
+          history: chatHistory
+        });
+
+        const timeoutPromise = new Promise<{ text: string }>((_, reject) =>
+          setTimeout(() => reject(new Error('AI response timed out')), 4000)
+        );
+
+        const result = await Promise.race([
+          chat.sendMessage({ message: userPrompt }),
+          timeoutPromise
+        ]) as { text?: string };
+
+        if (result.text) {
+          reply = result.text;
+          isAIGenerated = true;
+        }
+      } catch (aiErr) {
+        console.warn('Gemini inference fallback to RAG synthesizer:', aiErr);
       }
-
-      return res.json({ reply: fallback });
     }
+
+    // If Gemini was unavailable or timed out, synthesize a deterministic grounded answer using RAG chunks
+    if (!reply) {
+      const topChunk = retrieved[0]?.chunk;
+      const secondChunk = retrieved[1]?.chunk;
+
+      if (topChunk) {
+        reply = `${topChunk.content}`;
+        if (secondChunk && secondChunk.id !== topChunk.id) {
+          reply += ` Additionally, ${secondChunk.highlight}`;
+        }
+      } else {
+        reply = "Guravaiah Katta is a Full-Stack Software Engineer with strong expertise in Java, Spring Boot, React, and PostgreSQL. You can email him directly at kattaguravaiah00@gmail.com or call +91-9491501919!";
+      }
+    }
+
+    return res.json({
+      reply,
+      rag: {
+        retrievalLatency,
+        totalLatency: `${Date.now() - startTime}ms`,
+        confidenceScore: retrieved[0]?.score || 0.85,
+        sources: retrieved.map(r => ({
+          id: r.chunk.id,
+          title: r.chunk.title,
+          category: r.chunk.category,
+          score: r.score,
+          highlight: r.chunk.highlight,
+          content: r.chunk.content,
+          matchedKeywords: r.matchedKeywords
+        })),
+        grounded: true,
+        model: isAIGenerated ? 'gemini-3.8-flash (RAG)' : 'rag-hybrid-synthesizer'
+      }
+    });
+
   } catch (err: any) {
     console.error('Error in /api/chat:', err);
     return res.json({
-      reply: "Guravaiah Katta is actively open to software engineering opportunities and freelance contracts. Feel free to contact him directly at kattaguravaiah00@gmail.com or on LinkedIn at https://www.linkedin.com/in/guravaiah-katta/!"
+      reply: "Guravaiah Katta is actively open to software engineering opportunities and freelance contracts. Feel free to contact him directly at kattaguravaiah00@gmail.com or on LinkedIn at https://www.linkedin.com/in/guravaiah-katta/!",
+      rag: {
+        retrievalLatency: '0ms',
+        totalLatency: `${Date.now() - startTime}ms`,
+        confidenceScore: 0.70,
+        sources: [],
+        grounded: false,
+        model: 'fallback'
+      }
     });
   }
+});
+
+// API endpoint to inspect full RAG knowledge corpus
+app.get('/api/rag/corpus', (_req: Request, res: Response) => {
+  res.json({
+    totalChunks: RAG_KNOWLEDGE_BASE.length,
+    chunks: RAG_KNOWLEDGE_BASE
+  });
 });
 
 // API endpoint for client inquiries - forwards to FormSubmit to deliver actual email to Guravaiah
