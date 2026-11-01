@@ -12,6 +12,7 @@ export interface Project {
   metrics: string[];
   keyFeatures: string[];
   architectureNotes?: string;
+  imageUrl?: string;
 }
 
 export interface SkillCategory {
@@ -91,6 +92,7 @@ export const PORTFOLIO_DATA = {
       technologies: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "JPA/Hibernate", "Spring Security", "JWT", "Razorpay", "Google Maps API", "Tailwind CSS"],
       liveUrl: "https://gully-united-xlv.vercel.app/",
       githubUrl: "https://github.com/guru2005-z",
+      imageUrl: "/assets/gully-united-preview.jpg",
       metrics: [
         "100% double-booking collision prevention via atomic transactions",
         "Sub-250ms booking API response time on PostgreSQL",
@@ -140,6 +142,7 @@ export const PORTFOLIO_DATA = {
       technologies: ["Python", "Streamlit", "Scikit-learn", "NLP", "LLMs", "RAG", "Pinecone", "Pandas", "NumPy", "Hugging Face"],
       liveUrl: "https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/",
       githubUrl: "https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster",
+      imageUrl: "/assets/ai-sentiment-forecaster-preview.jpg",
       metrics: [
         "High accuracy sentiment classification on benchmark consumer feedback",
         "Sub-150ms semantic search latency via Pinecone indexing",
@@ -164,6 +167,7 @@ export const PORTFOLIO_DATA = {
       longDescription: "Won 1st Place overall for developing a real-time security telemetry auditor that flags anomalous network traffic patterns, insecure API endpoints, and potential CVE zero-day vectors.",
       technologies: ["Python", "Docker", "REST APIs", "Spring Boot", "Network Forensics"],
       githubUrl: "https://github.com/guru2005-z",
+      imageUrl: "/assets/supraja-scoreboard.jpg",
       metrics: [
         "1st Place Hackathon Winner among 40+ engineering teams",
         "Real-time packet inspection and threat severity scoring",

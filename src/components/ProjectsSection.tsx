@@ -36,6 +36,7 @@ interface ProjectPreview {
   rows: { k: string; v: string }[];
   status: string;
   accent: string;
+  image?: string;
 }
 
 interface ProjectItem {
@@ -127,7 +128,8 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
           { k: 'Gate Pass', v: 'Dynamic Encrypted QR Ticket Validator' }
         ],
         status: 'Production Live App · Vercel',
-        accent: '#10b981'
+        accent: '#10b981',
+        image: '/assets/gully-united-preview.jpg'
       }
     },
     {
@@ -167,7 +169,8 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
           { k: 'Inference', v: 'Sub-150ms Semantic Similarity Retrieval' }
         ],
         status: 'Interactive Live App · Streamlit Cloud',
-        accent: '#818cf8'
+        accent: '#818cf8',
+        image: '/assets/ai-sentiment-forecaster-preview.jpg'
       }
     },
     {
@@ -315,7 +318,8 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
           { k: 'Presented by', v: 'Santosh Chaluvadi, CEO Supraja Tech' }
         ],
         status: '1st Place Trophy & Excellence Cert',
-        accent: '#ef4444'
+        accent: '#ef4444',
+        image: '/assets/supraja-scoreboard.jpg'
       }
     },
     {
@@ -389,21 +393,108 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
               </div>
 
               {/* Floating Preview Window Card */}
-              <div className="w-[330px] rounded-xl overflow-hidden border border-[#3b3561] bg-[#17152b] shadow-2xl p-4 text-left flex flex-col gap-2.5">
+              <div className="w-[360px] rounded-xl overflow-hidden border border-[#3b3561] bg-[#161426] shadow-2xl p-3.5 text-left flex flex-col gap-2.5">
                 {/* Top Bar with window controls */}
                 <div className="flex items-center justify-between border-b border-[#2b274c] pb-2">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
-                    <span className="font-mono text-[10px] text-[#a5a0cb] ml-2">
+                    <span className="font-mono text-[10px] text-[#a5a0cb] ml-2 truncate max-w-[210px]">
                       {hoveredProject.preview.domain}
                     </span>
                   </div>
-                  <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white font-semibold">
+                  <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white font-semibold shrink-0">
                     {hoveredProject.year}
                   </span>
                 </div>
+
+                {/* Project Starting Page: High-Res Real Screenshot if available, else Mock UI */}
+                {hoveredProject.preview.image ? (
+                  <div className="relative w-full h-[190px] rounded-lg overflow-hidden bg-black/90 border border-[#2b274c] shadow-inner group">
+                    <img
+                      src={hoveredProject.preview.image}
+                      alt={hoveredProject.title}
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[10px] font-mono px-2 py-1 rounded bg-black/80 backdrop-blur-md border border-white/10">
+                      <span className="text-emerald-400 font-bold truncate">● {hoveredProject.preview.status}</span>
+                      <span className="text-white/80 shrink-0 font-medium">Starting Page ↗</span>
+                    </div>
+                  </div>
+                ) : (
+                  /* Project Starting Page Live Screen Mockup */
+                  <div className="w-full rounded-lg bg-[#0d0b1a] border border-[#2b274c] p-2.5 flex flex-col gap-1.5 font-mono shadow-inner text-xs">
+                    {hoveredProject.id === 'nbkrist-ieee' && (
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                          <span className="font-bold text-sky-400 flex items-center gap-1">🌐 NBKRISTIEEE.IN</span>
+                          <span className="text-neutral-400 text-[9px]">VICE CHAIR LEAD</span>
+                        </div>
+                        <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                          <span className="text-white font-bold text-[10px]">Official IEEE Student Branch Portal</span>
+                          <span className="text-neutral-300 text-[9px]">Memberships · Officer Directory · Symposiums</span>
+                        </div>
+                        <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                          <span>Global Edge Delivery: &lt;1s</span>
+                          <span className="text-sky-400">100% Responsive</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {hoveredProject.id === 'hackspirit' && (
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                          <span className="font-bold text-purple-400 flex items-center gap-1">⚡ HACKSPIRIT.FUN</span>
+                          <span className="text-neutral-400 text-[9px]">CAMPUS ARENA</span>
+                        </div>
+                        <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex items-center justify-between">
+                          <span className="text-purple-300 font-bold text-xs tracking-widest">[ 36 : 00 : 00 ]</span>
+                          <span className="px-1 py-0.5 bg-purple-500/20 text-purple-300 rounded text-[9px] border border-purple-500/40">SPRINT LIVE</span>
+                        </div>
+                        <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                          <span>45+ Teams Checked In</span>
+                          <span className="text-purple-400">Tracks: AI, Web3, Cyber</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {hoveredProject.id === 'khetconnect' && (
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                          <span className="font-bold text-amber-400 flex items-center gap-1">🌾 KHETCONNECT</span>
+                          <span className="text-neutral-400 text-[9px]">AGRARIAN RADAR</span>
+                        </div>
+                        <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                          <span className="text-white font-bold text-[10px]">5.0 km Geospatial Proximity Match</span>
+                          <span className="text-amber-200 text-[9px]">4 Local Field Labourers Available</span>
+                        </div>
+                        <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                          <span>Spring Security JWT Auth</span>
+                          <span className="text-amber-400">Low-bandwidth Mode</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {hoveredProject.id === 'medicare' && (
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                          <span className="font-bold text-teal-400 flex items-center gap-1">🏥 MEDICARE CONNECT</span>
+                          <span className="text-neutral-400 text-[9px]">2ND PLACE WINNER</span>
+                        </div>
+                        <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                          <span className="text-white font-bold text-[10px]">Current Token: #042 · Dr. Consultation</span>
+                          <span className="text-teal-200 text-[9px]">Est. Wait: 12 Minutes Remaining</span>
+                        </div>
+                        <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                          <span>HIPAA Encrypted EHR</span>
+                          <span className="text-teal-400">Emergency Bed Sync</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Title & Tag */}
                 <div>
@@ -415,143 +506,12 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                   </h4>
                 </div>
 
-                {/* Project Starting Page Live Screen Mockup */}
-                <div className="w-full rounded-lg bg-[#0d0b1a] border border-[#2b274c] p-2.5 flex flex-col gap-1.5 font-mono shadow-inner text-xs">
-                  {hoveredProject.id === 'gully-united' && (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-emerald-400 flex items-center gap-1">🏏 GULLY UNITED</span>
-                        <span className="text-neutral-400 text-[9px]">VERCEL PROD</span>
-                      </div>
-                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
-                        <span className="text-white font-bold text-[10px]">Star Turf Arena · Pitch #1</span>
-                        <div className="flex items-center justify-between text-[9px]">
-                          <span className="text-emerald-300 font-semibold">07:00 PM – 09:00 PM</span>
-                          <span className="px-1 py-0.2 bg-emerald-500/20 text-emerald-300 rounded border border-emerald-500/40">ACID LOCKED</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>Razorpay: ₹1,400 Verified</span>
-                        <span className="text-emerald-400">QR Gate Ticket #9921</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {hoveredProject.id === 'ai-forecaster' && (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-red-400 flex items-center gap-1">👑 STREAMLIT CLOUD</span>
-                        <span className="text-neutral-400 text-[9px]">INFOSYS INTERNSHIP</span>
-                      </div>
-                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
-                        <span className="text-neutral-300 text-[9px] truncate">"Q4 consumer commentary and market trends..."</span>
-                        <div className="flex items-center justify-between text-[9px] mt-0.5">
-                          <span className="text-indigo-300 font-bold">Prediction: 92.4% BULLISH</span>
-                          <span className="px-1 py-0.2 bg-indigo-500/20 text-indigo-300 rounded border border-indigo-500/40">RAG k=8</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>Pinecone Latency: 142ms</span>
-                        <span className="text-emerald-400">Zero Hallucination</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {hoveredProject.id === 'nbkrist-ieee' && (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-sky-400 flex items-center gap-1">🌐 NBKRISTIEEE.IN</span>
-                        <span className="text-neutral-400 text-[9px]">VICE CHAIR LEAD</span>
-                      </div>
-                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
-                        <span className="text-white font-bold text-[10px]">Official IEEE Student Branch Portal</span>
-                        <span className="text-neutral-300 text-[9px]">Memberships · Officer Directory · Symposiums</span>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>Global Edge Delivery: &lt;1s</span>
-                        <span className="text-sky-400">100% Responsive</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {hoveredProject.id === 'hackspirit' && (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-purple-400 flex items-center gap-1">⚡ HACKSPIRIT.FUN</span>
-                        <span className="text-neutral-400 text-[9px]">CAMPUS ARENA</span>
-                      </div>
-                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex items-center justify-between">
-                        <span className="text-purple-300 font-bold text-xs tracking-widest">[ 36 : 00 : 00 ]</span>
-                        <span className="px-1 py-0.5 bg-purple-500/20 text-purple-300 rounded text-[9px] border border-purple-500/40">SPRINT LIVE</span>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>45+ Teams Checked In</span>
-                        <span className="text-purple-400">Tracks: AI, Web3, Cyber</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {hoveredProject.id === 'khetconnect' && (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-amber-400 flex items-center gap-1">🌾 KHETCONNECT</span>
-                        <span className="text-neutral-400 text-[9px]">AGRARIAN RADAR</span>
-                      </div>
-                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
-                        <span className="text-white font-bold text-[10px]">5.0 km Geospatial Proximity Match</span>
-                        <span className="text-amber-200 text-[9px]">4 Local Field Labourers Available</span>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>Spring Security JWT Auth</span>
-                        <span className="text-amber-400">Low-bandwidth Mode</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {hoveredProject.id === 'cybershield' && (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-red-400 flex items-center gap-1">🛡️ SUPRAJA CTF HACKATHON</span>
-                        <span className="text-amber-400 font-bold text-[9px]">★ 1ST PLACE WINNER</span>
-                      </div>
-                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
-                        <div className="flex items-center justify-between text-[10px]">
-                          <span className="text-emerald-300 font-bold">#1 Bug_Slayers (Scoreboard)</span>
-                          <span className="px-1.5 py-0.2 bg-emerald-500/20 text-emerald-300 rounded font-mono font-bold text-[9px]">223 PTS</span>
-                        </div>
-                        <span className="text-neutral-300 text-[9px]">Best Student Award · Signed by CEO Santosh Chaluvadi</span>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>ctfhackathon.great-site.net</span>
-                        <span className="text-amber-400 font-bold">5-Star Excellence Cert</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {hoveredProject.id === 'medicare' && (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
-                        <span className="font-bold text-teal-400 flex items-center gap-1">🏥 MEDICARE CONNECT</span>
-                        <span className="text-neutral-400 text-[9px]">2ND PLACE WINNER</span>
-                      </div>
-                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
-                        <span className="text-white font-bold text-[10px]">Current Token: #042 · Dr. Consultation</span>
-                        <span className="text-teal-200 text-[9px]">Est. Wait: 12 Minutes Remaining</span>
-                      </div>
-                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
-                        <span>HIPAA Encrypted EHR</span>
-                        <span className="text-teal-400">Emergency Bed Sync</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
                 {/* Metrics / Details Table */}
                 <div className="flex flex-col gap-1 py-1 text-[11px] font-mono border-t border-[#2b274c]/80">
                   {hoveredProject.preview.rows.map((row, rIdx) => (
                     <div key={rIdx} className="flex items-center justify-between gap-2">
                       <span className="text-[#847ea8] text-[10px] uppercase">{row.k}:</span>
-                      <span className="text-[#f1f0f8] font-semibold truncate max-w-[200px] text-[10px]">
+                      <span className="text-[#f1f0f8] font-semibold truncate max-w-[210px] text-[10px]">
                         {row.v}
                       </span>
                     </div>
@@ -559,7 +519,7 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                 </div>
 
                 {/* Status Badge */}
-                <div className="flex items-center justify-between pt-0.5">
+                <div className="flex items-center justify-between pt-0.5 border-t border-[#2b274c]/60">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-950/70 text-emerald-300 border border-emerald-500/30">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span>{hoveredProject.preview.status}</span>
@@ -642,6 +602,39 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                 {isExpanded && (
                   <div className="bg-[#ffffff] border-t border-[#e6e3da] p-4 sm:p-6 flex flex-col gap-6 animate-in fade-in duration-200">
                     
+                    {/* Live Screenshot Starting Page Banner when available */}
+                    {project.preview.image && (
+                      <div className="relative rounded-xl overflow-hidden border border-[#d5d1c5] bg-[#0d0b1a] shadow-md group">
+                        <img 
+                          src={project.preview.image} 
+                          alt={project.title} 
+                          className="w-full h-[220px] sm:h-[300px] object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col sm:flex-row sm:items-end justify-between p-4 sm:p-5 gap-3">
+                          <div>
+                            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                              Live Starting Page UI · {project.preview.tag}
+                            </span>
+                            <h4 className="text-white text-base sm:text-xl font-bold mt-0.5">
+                              {project.preview.heading}
+                            </h4>
+                          </div>
+                          {project.liveUrl && (
+                            <a 
+                              href={project.liveUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#6366f1] text-white text-xs font-mono font-bold hover:bg-[#4f46e5] transition-all shadow-lg shrink-0 w-fit"
+                            >
+                              <span>Open Live Application</span>
+                              <span>↗</span>
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Interactive Architecture Flow Panel */}
                     <div className="p-4 sm:p-5 rounded-xl border border-[#d5d1c5] bg-[#f9f8f5] grid-bg flex flex-col gap-3">
                       
