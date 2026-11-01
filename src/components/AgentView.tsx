@@ -82,12 +82,19 @@ export const AgentView: React.FC<AgentViewProps> = ({ onBackToClassic, initialPr
   const [isLoading, setIsLoading] = useState(false);
   const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
   const [expandedCitationIdx, setExpandedCitationIdx] = useState<number | null>(0);
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(true);
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'trace' | 'corpus' | 'state'>('trace');
   const [corpusSearch, setCorpusSearch] = useState('');
   const [selectedCorpusCategory, setSelectedCorpusCategory] = useState<string>('All');
   const [modelKilled, setModelKilled] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
+
+  // Auto-open trace panel only on large screens (desktop)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      setIsSidePanelOpen(true);
+    }
+  }, []);
 
   const projects = PORTFOLIO_DATA.projects;
 
@@ -220,20 +227,20 @@ export const AgentView: React.FC<AgentViewProps> = ({ onBackToClassic, initialPr
   return (
     <div className="min-h-[calc(100vh-3.5rem)] flex flex-col bg-[#f9f8f5] grid-bg select-text">
       {/* Top Bar matching mohammad-rizwan.tech/agent */}
-      <div className="w-full border-b border-[#e6e3da] bg-[#f9f8f5]/90 backdrop-blur-xs px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs font-mono">
-        <div className="flex items-center gap-3">
+      <div className="w-full border-b border-[#e6e3da] bg-[#f9f8f5]/90 backdrop-blur-xs px-3 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between text-xs font-mono gap-2 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <button
             onClick={onBackToClassic}
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#161514] hover:text-[#d41514] font-medium transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1 sm:gap-1.5 text-xs font-mono text-[#161514] hover:text-[#d41514] font-medium transition-colors cursor-pointer shrink-0"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Classic</span>
           </button>
           <span className="text-[#d5d1c5]">/</span>
-          <span className="font-semibold text-[#161514]">Guravaiah Katta AI Agent</span>
+          <span className="font-semibold text-[#161514] truncate">Guru AI</span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <span className="text-[#6e6b63] hidden md:inline">AP 15:29 IST</span>
           <button
             onClick={handleReset}
@@ -242,35 +249,36 @@ export const AgentView: React.FC<AgentViewProps> = ({ onBackToClassic, initialPr
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
-          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded border border-[#d5d1c5] bg-[#ffffff] text-[11px] text-[#161514]">
+          <div className="flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded border border-[#d5d1c5] bg-[#ffffff] text-[10px] sm:text-[11px] text-[#161514]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#16a34a]" />
-            <span>gemini-3.8-flash</span>
+            <span className="hidden sm:inline">gemini-3.8-flash</span>
+            <span className="sm:hidden font-mono">RAG</span>
           </div>
           <button
             onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
-            className="px-2 py-0.5 rounded border border-[#d5d1c5] bg-[#ffffff] text-[11px] text-[#6e6b63] hover:text-[#161514] cursor-pointer"
+            className="px-2 py-0.5 rounded border border-[#d5d1c5] bg-[#ffffff] text-[10px] sm:text-[11px] text-[#6e6b63] hover:text-[#161514] cursor-pointer"
           >
-            {isSidePanelOpen ? 'Hide Trace' : 'Show Trace'}
+            {isSidePanelOpen ? 'Hide Trace' : 'Trace / RAG'}
           </button>
         </div>
       </div>
 
       {/* Main Split Layout: Left Canvas + Right Trace Telemetry Panel */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
         
         {/* Left Area: Infinite Canvas & Shipped Projects */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col items-center">
-          <div className="max-w-3xl w-full flex flex-col gap-6">
+        <div className="flex-1 min-w-0 w-full overflow-y-auto p-3 sm:p-6 lg:p-8 flex flex-col items-center">
+          <div className="max-w-3xl w-full flex flex-col gap-4 sm:gap-6">
 
             {/* Conversation Flow */}
             {messages.map((m, idx) => (
               <div key={idx} className="w-full flex flex-col items-start gap-2">
                 {m.role === 'user' ? (
-                  <div className="self-end bg-[#161514] text-white px-4 py-2.5 rounded-2xl rounded-tr-none text-xs sm:text-sm font-sans shadow-xs">
+                  <div className="self-end bg-[#161514] text-white px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl rounded-tr-none text-xs sm:text-sm font-sans shadow-xs max-w-[88%] break-words">
                     {m.content}
                   </div>
                 ) : (
-                  <div className="w-full bg-[#ffffff] border border-[#d5d1c5] rounded-xl p-4 sm:p-5 shadow-xs text-left">
+                  <div className="w-full bg-[#ffffff] border border-[#d5d1c5] rounded-xl p-3.5 sm:p-5 shadow-xs text-left overflow-hidden">
                     {/* Header [ ▪ ] matching mohammad-rizwan.tech/agent */}
                     <div className="flex items-center gap-2.5 mb-3">
                       <div className="w-4 h-4 border border-[#161514] rounded-xs flex items-center justify-center bg-white shrink-0">
@@ -520,33 +528,42 @@ export const AgentView: React.FC<AgentViewProps> = ({ onBackToClassic, initialPr
           </div>
         </div>
 
-        {/* Right Area: Trace & Telemetry Panel (Exact match to screenshot) */}
+        {/* Right Area: Trace & Telemetry Panel (Mobile Slide-Over Drawer / Desktop Sidebar) */}
         {isSidePanelOpen && (
-          <div className="w-80 lg:w-96 border-l border-[#e6e3da] bg-[#ffffff] flex flex-col font-mono text-xs shrink-0 select-none">
-            {/* Panel Tabs Header */}
-            <div className="flex items-center justify-between border-b border-[#e6e3da] bg-[#f9f8f5] px-3 py-2">
-              <div className="flex items-center gap-1.5">
-                {(['trace', 'corpus', 'state'] as const).map(tab => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`px-2 py-1 rounded text-[11px] uppercase transition-colors cursor-pointer ${
-                      activeTab === tab
-                        ? 'bg-[#ffffff] font-bold text-[#161514] border border-[#d5d1c5] shadow-2xs'
-                        : 'text-[#6e6b63] hover:text-[#161514]'
-                    }`}
-                  >
-                    {tab === 'corpus' ? 'RAG Index (17)' : tab}
-                  </button>
-                ))}
+          <>
+            {/* Mobile Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/40 backdrop-blur-xs z-40 lg:hidden"
+              onClick={() => setIsSidePanelOpen(false)}
+            />
+
+            {/* Sidebar / Drawer Container */}
+            <div className="fixed inset-y-0 right-0 z-50 w-[88vw] max-w-[360px] lg:static lg:w-80 xl:w-96 border-l border-[#e6e3da] bg-[#ffffff] flex flex-col font-mono text-xs shrink-0 select-none shadow-2xl lg:shadow-none animate-in slide-in-from-right duration-200">
+              {/* Panel Tabs Header */}
+              <div className="flex items-center justify-between border-b border-[#e6e3da] bg-[#f9f8f5] px-3 py-2">
+                <div className="flex items-center gap-1.5">
+                  {(['trace', 'corpus', 'state'] as const).map(tab => (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`px-2 py-1 rounded text-[11px] uppercase transition-colors cursor-pointer ${
+                        activeTab === tab
+                          ? 'bg-[#ffffff] font-bold text-[#161514] border border-[#d5d1c5] shadow-2xs'
+                          : 'text-[#6e6b63] hover:text-[#161514]'
+                      }`}
+                    >
+                      {tab === 'corpus' ? 'RAG Index (17)' : tab}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => setIsSidePanelOpen(false)}
+                  className="p-1 text-[#9c988d] hover:text-[#161514] cursor-pointer"
+                  title="Close panel"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
               </div>
-              <button
-                onClick={() => setIsSidePanelOpen(false)}
-                className="p-1 text-[#9c988d] hover:text-[#161514] cursor-pointer"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </div>
 
             {/* Tab: Trace Telemetry */}
             {activeTab === 'trace' && (
@@ -694,7 +711,8 @@ export const AgentView: React.FC<AgentViewProps> = ({ onBackToClassic, initialPr
               </span>
             </div>
           </div>
-        )}
+        </>
+      )}
 
       </div>
     </div>

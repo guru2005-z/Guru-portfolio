@@ -202,7 +202,7 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="lg:col-span-7 flex flex-col items-start">
             {/* Huge Name Display */}
             <h1
-              className="font-bold text-5xl sm:text-7xl lg:text-7xl xl:text-8xl tracking-tight text-[#161514] leading-[0.94] mb-5 transition-transform duration-75 will-change-transform"
+              className="font-bold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-[#161514] leading-[0.94] mb-5 transition-transform duration-75 will-change-transform"
               style={{
                 transform: `translate3d(${px * 5}px, ${py * 3.5}px, 0)`
               }}
@@ -223,7 +223,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Architecture Loopline Pipeline with pulse animation */}
             <div
-              className="flex flex-wrap items-center gap-2 py-2.5 px-3.5 rounded-xl border border-[#e6e3da] bg-[#ffffff]/95 backdrop-blur-xs w-fit font-mono text-xs text-[#6e6b63] mb-6 shadow-xs transition-transform duration-75 will-change-transform"
+              className="flex flex-wrap items-center gap-1.5 sm:gap-2 py-2 sm:py-2.5 px-3 sm:px-3.5 rounded-xl border border-[#e6e3da] bg-[#ffffff]/95 backdrop-blur-xs w-fit max-w-full font-mono text-[11px] sm:text-xs text-[#6e6b63] mb-6 shadow-xs transition-transform duration-75 will-change-transform"
               style={{
                 transform: `translate3d(${px * 6}px, ${py * 4}px, 0)`
               }}
