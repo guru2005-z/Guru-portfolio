@@ -278,6 +278,17 @@ export const PORTFOLIO_DATA = {
       badgeText: "Associate • Signed by Pablo Veramendi"
     },
     {
+      id: "infosys-internship-6.0",
+      title: "Infosys Springboard Internship 6.0 Certificate of Completion",
+      issuer: "Infosys Limited",
+      date: "April 8, 2026",
+      credentialId: "Internship 6.0 (B 11)",
+      imageUrl: "/assets/infosys-certificate.jpg",
+      verifyUrl: "https://verify.onwingspan.com",
+      description: "Completed Internship 6.0 (B 11): Intelligent Forecasting System for Consumer Behavior and Industry Trends (Dec 22, 2025 – Feb 25, 2026). Signed by Satheesha B. Nanjappa (SVP & Head, Infosys Limited).",
+      badgeText: "Verified on Wingspan • Signed by Satheesha B. Nanjappa"
+    },
+    {
       id: "kaggle-genai-2025",
       title: "Kaggle GenAI 2025 Agents Intensive Capstone",
       issuer: "Kaggle & Google",

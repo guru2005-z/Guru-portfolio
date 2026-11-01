@@ -131,6 +131,30 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ onOpenCertMo
               </span>
             </div>
 
+            {/* Clickable Infosys Springboard Internship Card */}
+            <div
+              onClick={onOpenCertModal}
+              className="p-4 rounded-xl border border-[#007cc3]/40 bg-[#f0f9ff] hover:border-[#007cc3] hover:shadow-xs transition-all cursor-pointer flex items-center justify-between gap-3 group"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#007cc3]/15 border border-[#007cc3]/30 flex items-center justify-center text-[#007cc3] shrink-0 font-bold">
+                  🏢
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-[#161514] group-hover:text-[#007cc3] transition-colors flex items-center gap-1.5">
+                    <span>Infosys Springboard Internship 6.0</span>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] font-mono uppercase bg-sky-200 text-sky-900 font-bold">Verified</span>
+                  </h4>
+                  <span className="text-xs font-mono text-[#6e6b63]">
+                    Intelligent Forecasting System · verify.onwingspan.com
+                  </span>
+                </div>
+              </div>
+              <span className="font-mono text-xs text-[#007cc3] group-hover:underline shrink-0">
+                View ↗
+              </span>
+            </div>
+
             {/* Other Certifications */}
             <ul className="flex flex-col gap-2 font-mono text-xs">
               <li className="p-3 rounded-lg border border-[#e6e3da] bg-[#ffffff] flex items-center justify-between">

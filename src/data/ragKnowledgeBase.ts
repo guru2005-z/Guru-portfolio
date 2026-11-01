@@ -64,11 +64,11 @@ export const RAG_KNOWLEDGE_BASE: KnowledgeChunk[] = [
   },
   {
     id: 'experience-infosys-springboard',
-    title: 'Infosys Springboard Virtual Internship - AI Research Intern',
+    title: 'Infosys Springboard Virtual Internship 6.0 - AI Research Intern',
     category: 'Project',
-    keywords: ['infosys', 'springboard', 'internship', 'intern', 'ai', 'research', 'sentiment', 'market', 'trend', 'forecaster', 'streamlit'],
-    content: 'Guravaiah completed the Infosys Springboard Virtual AI Research Internship (Jan 2026 – Mar 2026). During this internship, he engineered the AI Market Trend & Consumer Sentiment Forecaster, implementing NLP pipelines, feature extraction, TF-IDF, sentiment classification, and RAG contextual retrieval. Live Streamlit App: https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/ | GitHub: https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster',
-    highlight: 'Infosys Springboard Virtual Internship building AI sentiment forecasting pipeline live on Streamlit.'
+    keywords: ['infosys', 'springboard', 'internship', 'intern', 'ai', 'research', 'sentiment', 'market', 'trend', 'forecaster', 'streamlit', 'certificate', 'wingspan'],
+    content: 'Guravaiah completed Infosys Springboard Internship 6.0 (B 11): "Intelligent Forecasting System for Consumer Behavior and Industry Trends" (Dec 22, 2025 – Feb 25, 2026, issued April 8, 2026). Certified by Satheesha B. Nanjappa (Senior Vice President and Head, Education, Training and Assessment, Infosys Limited) and verifiable via QR code at https://verify.onwingspan.com. During this internship, he engineered the AI Consumer Sentiment Forecaster deployed live on Streamlit Cloud (https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/) with GitHub code at https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster.',
+    highlight: 'Infosys Springboard Internship 6.0 certified by SVP Satheesha B. Nanjappa; verifiable on Wingspan.'
   },
   {
     id: 'nbkrist-ieee-portal',

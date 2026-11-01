@@ -111,12 +111,24 @@ export const WorkSection: React.FC = () => {
           <motion.li variants={itemFadeUp} className="p-5 sm:p-6 rounded-xl border border-[#e6e3da] bg-[#ffffff] shadow-xs relative flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e6e3da] pb-3">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-[#6e6b63]">Jan 2026 – Mar 2026</span>
+                <span className="font-mono text-xs text-[#6e6b63]">Dec 2025 – Feb 2026</span>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-[#f0ede6] text-[#6e6b63]">
-                  internship
+                  internship 6.0
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-sky-50 text-[#007cc3] border border-sky-200 font-bold">
+                  verified
                 </span>
               </div>
               <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="/assets/infosys-certificate.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#007cc3] font-semibold hover:underline"
+                >
+                  <span>Certificate</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
                 <a
                   href="https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/"
                   target="_blank"
@@ -143,12 +155,12 @@ export const WorkSection: React.FC = () => {
                 Infosys Springboard
               </h3>
               <p className="text-xs sm:text-sm font-semibold text-[#6e6b63] font-mono mt-0.5">
-                Virtual AI Research Intern
+                Internship 6.0 (B 11): Intelligent Forecasting System for Consumer Behavior and Industry Trends
               </p>
             </div>
 
             <p className="text-sm text-[#161514] leading-relaxed">
-              Developed an AI-based consumer sentiment analysis system using <mark>NLP</mark> and machine learning techniques, deploying an interactive live forecaster dashboard on <mark>Streamlit Cloud</mark>.
+              Developed an AI-based consumer sentiment and industry market trend forecasting system using <mark>NLP</mark> and machine learning techniques, verified via official Infosys completion credential (signed by <mark>Satheesha B. Nanjappa</mark>, Senior VP & Head, Infosys Limited) and deployed live on <mark>Streamlit Cloud</mark>.
             </p>
 
             <ul className="flex flex-col gap-2 text-xs sm:text-sm text-[#6e6b63]">
