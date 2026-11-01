@@ -193,3 +193,4 @@ export function retrieveRelevantKnowledge(query: string, topK: number = 3): RagR
   // Return topK results
   return scored.slice(0, topK);
 }
+
