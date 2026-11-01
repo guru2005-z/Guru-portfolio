@@ -413,8 +413,136 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                   </h4>
                 </div>
 
+                {/* Project Starting Page Live Screen Mockup */}
+                <div className="w-full rounded-lg bg-[#0d0b1a] border border-[#2b274c] p-2.5 flex flex-col gap-1.5 font-mono shadow-inner text-xs">
+                  {hoveredProject.id === 'gully-united' && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                        <span className="font-bold text-emerald-400 flex items-center gap-1">🏏 GULLY UNITED</span>
+                        <span className="text-neutral-400 text-[9px]">VERCEL PROD</span>
+                      </div>
+                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                        <span className="text-white font-bold text-[10px]">Star Turf Arena · Pitch #1</span>
+                        <div className="flex items-center justify-between text-[9px]">
+                          <span className="text-emerald-300 font-semibold">07:00 PM – 09:00 PM</span>
+                          <span className="px-1 py-0.2 bg-emerald-500/20 text-emerald-300 rounded border border-emerald-500/40">ACID LOCKED</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                        <span>Razorpay: ₹1,400 Verified</span>
+                        <span className="text-emerald-400">QR Gate Ticket #9921</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {hoveredProject.id === 'ai-forecaster' && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                        <span className="font-bold text-red-400 flex items-center gap-1">👑 STREAMLIT CLOUD</span>
+                        <span className="text-neutral-400 text-[9px]">INFOSYS INTERNSHIP</span>
+                      </div>
+                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                        <span className="text-neutral-300 text-[9px] truncate">"Q4 consumer commentary and market trends..."</span>
+                        <div className="flex items-center justify-between text-[9px] mt-0.5">
+                          <span className="text-indigo-300 font-bold">Prediction: 92.4% BULLISH</span>
+                          <span className="px-1 py-0.2 bg-indigo-500/20 text-indigo-300 rounded border border-indigo-500/40">RAG k=8</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                        <span>Pinecone Latency: 142ms</span>
+                        <span className="text-emerald-400">Zero Hallucination</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {hoveredProject.id === 'nbkrist-ieee' && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                        <span className="font-bold text-sky-400 flex items-center gap-1">🌐 NBKRISTIEEE.IN</span>
+                        <span className="text-neutral-400 text-[9px]">VICE CHAIR LEAD</span>
+                      </div>
+                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                        <span className="text-white font-bold text-[10px]">Official IEEE Student Branch Portal</span>
+                        <span className="text-neutral-300 text-[9px]">Memberships · Officer Directory · Symposiums</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                        <span>Global Edge Delivery: &lt;1s</span>
+                        <span className="text-sky-400">100% Responsive</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {hoveredProject.id === 'hackspirit' && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                        <span className="font-bold text-purple-400 flex items-center gap-1">⚡ HACKSPIRIT.FUN</span>
+                        <span className="text-neutral-400 text-[9px]">CAMPUS ARENA</span>
+                      </div>
+                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex items-center justify-between">
+                        <span className="text-purple-300 font-bold text-xs tracking-widest">[ 36 : 00 : 00 ]</span>
+                        <span className="px-1 py-0.5 bg-purple-500/20 text-purple-300 rounded text-[9px] border border-purple-500/40">SPRINT LIVE</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                        <span>45+ Teams Checked In</span>
+                        <span className="text-purple-400">Tracks: AI, Web3, Cyber</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {hoveredProject.id === 'khetconnect' && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                        <span className="font-bold text-amber-400 flex items-center gap-1">🌾 KHETCONNECT</span>
+                        <span className="text-neutral-400 text-[9px]">AGRARIAN RADAR</span>
+                      </div>
+                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                        <span className="text-white font-bold text-[10px]">5.0 km Geospatial Proximity Match</span>
+                        <span className="text-amber-200 text-[9px]">4 Local Field Labourers Available</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                        <span>Spring Security JWT Auth</span>
+                        <span className="text-amber-400">Low-bandwidth Mode</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {hoveredProject.id === 'cybershield' && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                        <span className="font-bold text-red-400 flex items-center gap-1">🛡️ CYBERSHIELD</span>
+                        <span className="text-neutral-400 text-[9px]">1ST PLACE WINNER</span>
+                      </div>
+                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                        <span className="text-red-300 font-bold text-[10px]">🚨 0-Day SQLi Vector Flagged</span>
+                        <span className="text-neutral-300 text-[9px]">Severity 8.9 [Quarantined in Sandbox]</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                        <span>Traffic Sniff: 12,480 req/s</span>
+                        <span className="text-red-400">Threat Isolated</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {hoveredProject.id === 'medicare' && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                        <span className="font-bold text-teal-400 flex items-center gap-1">🏥 MEDICARE CONNECT</span>
+                        <span className="text-neutral-400 text-[9px]">2ND PLACE WINNER</span>
+                      </div>
+                      <div className="bg-[#1e1b38] p-1.5 rounded border border-white/10 flex flex-col gap-0.5">
+                        <span className="text-white font-bold text-[10px]">Current Token: #042 · Dr. Consultation</span>
+                        <span className="text-teal-200 text-[9px]">Est. Wait: 12 Minutes Remaining</span>
+                      </div>
+                      <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                        <span>HIPAA Encrypted EHR</span>
+                        <span className="text-teal-400">Emergency Bed Sync</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 {/* Metrics / Details Table */}
-                <div className="flex flex-col gap-1.5 py-1 text-[11px] font-mono border-y border-[#2b274c]/80">
+                <div className="flex flex-col gap-1 py-1 text-[11px] font-mono border-t border-[#2b274c]/80">
                   {hoveredProject.preview.rows.map((row, rIdx) => (
                     <div key={rIdx} className="flex items-center justify-between gap-2">
                       <span className="text-[#847ea8] text-[10px] uppercase">{row.k}:</span>

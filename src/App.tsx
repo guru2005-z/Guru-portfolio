@@ -24,9 +24,15 @@ export default function App() {
   const [currentMode, setCurrentMode] = useState<'classic' | 'agent'>('classic');
   const [gameTheme, setGameTheme] = useState<GameTheme>('tetris');
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+  const [selectedCert, setSelectedCert] = useState<'az900' | 'mlsa' | 'infosys'>('az900');
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isArcadeOpen, setIsArcadeOpen] = useState(false);
   const [agentInitialPrompt, setAgentInitialPrompt] = useState<string>('');
+
+  const handleOpenCertModal = (certKey?: 'az900' | 'mlsa' | 'infosys') => {
+    if (certKey) setSelectedCert(certKey);
+    setIsCertModalOpen(true);
+  };
 
   const handleAskAgentFromProject = (prompt: string) => {
     setAgentInitialPrompt(prompt);
@@ -92,7 +98,7 @@ export default function App() {
           <EventsSection />
 
           {/* 07 Education & Certifications */}
-          <EducationSection onOpenCertModal={() => setIsCertModalOpen(true)} />
+          <EducationSection onOpenCertModal={handleOpenCertModal} />
 
           {/* 08 Contact */}
           <ContactSection onOpenAgent={() => setCurrentMode('agent')} />
@@ -108,6 +114,7 @@ export default function App() {
 
       <CertModal
         isOpen={isCertModalOpen}
+        defaultCert={selectedCert}
         onClose={() => setIsCertModalOpen(false)}
       />
 
