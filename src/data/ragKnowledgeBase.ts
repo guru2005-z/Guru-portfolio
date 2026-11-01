@@ -143,6 +143,14 @@ export const RAG_KNOWLEDGE_BASE: KnowledgeChunk[] = [
     highlight: 'Microsoft Certified: Azure Fundamentals (AZ-900) - ID: 5B48115BB42E21FC.'
   },
   {
+    id: 'certifications-microsoft-mlsa',
+    title: 'Microsoft Student Ambassadors | 2026 (Associate Certificate)',
+    category: 'Certification',
+    keywords: ['mlsa', 'microsoft student ambassador', 'ambassador', 'associate', 'pablo veramendi', 'certificate', 'microsoft'],
+    content: 'Guravaiah Katta is a recognized Microsoft Student Ambassador (MLSA 2026 Associate). Certified by Pablo Veramendi (Global Director | Microsoft Student Ambassadors) in recognition of hard work and dedication to the global student community. Active in cloud computing mentorship, Azure fundamentals, and student developer workshops. Certificate viewable live on the portfolio.',
+    highlight: 'Microsoft Student Ambassadors | 2026 (Associate) signed by Global Director Pablo Veramendi.'
+  },
+  {
     id: 'certifications-kaggle-genai',
     title: 'Kaggle GenAI 2025 Agents Intensive Capstone',
     category: 'Certification',

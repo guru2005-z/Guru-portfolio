@@ -107,6 +107,30 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ onOpenCertMo
               </span>
             </div>
 
+            {/* Clickable Microsoft Student Ambassador (MLSA) Card */}
+            <div
+              onClick={onOpenCertModal}
+              className="p-4 rounded-xl border border-amber-500/40 bg-[#fffbeb] hover:border-amber-500 hover:shadow-xs transition-all cursor-pointer flex items-center justify-between gap-3 group"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-600 shrink-0 font-bold">
+                  🎓
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-[#161514] group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
+                    <span>Microsoft Student Ambassadors | 2026</span>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] font-mono uppercase bg-amber-200 text-amber-900 font-bold">Associate</span>
+                  </h4>
+                  <span className="text-xs font-mono text-[#6e6b63]">
+                    Signed by Pablo Veramendi · Global Community
+                  </span>
+                </div>
+              </div>
+              <span className="font-mono text-xs text-amber-700 group-hover:underline shrink-0">
+                View ↗
+              </span>
+            </div>
+
             {/* Other Certifications */}
             <ul className="flex flex-col gap-2 font-mono text-xs">
               <li className="p-3 rounded-lg border border-[#e6e3da] bg-[#ffffff] flex items-center justify-between">

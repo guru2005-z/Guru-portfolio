@@ -268,6 +268,16 @@ export const PORTFOLIO_DATA = {
       badgeText: "Online Verifiable • Signed by Satya Nadella"
     },
     {
+      id: "microsoft-mlsa-2026",
+      title: "Microsoft Student Ambassadors | 2026 (Associate)",
+      issuer: "Microsoft",
+      date: "2026",
+      credentialId: "MLSA-2026-ASSOCIATE",
+      imageUrl: "/assets/mlsa-certificate.jpg",
+      description: "Recognized as a Microsoft Student Ambassador (Associate) in recognition of hard work and dedication to the global student community. Signed by Pablo Veramendi (Global Director).",
+      badgeText: "Associate • Signed by Pablo Veramendi"
+    },
+    {
       id: "kaggle-genai-2025",
       title: "Kaggle GenAI 2025 Agents Intensive Capstone",
       issuer: "Kaggle & Google",
