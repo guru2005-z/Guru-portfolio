@@ -132,26 +132,27 @@ export const PORTFOLIO_DATA = {
     {
       id: "ai-market-forecaster",
       title: "AI Consumer Sentiment & Market Forecaster",
-      subtitle: "Machine Learning, NLP & RAG Intelligence Pipeline",
+      subtitle: "Infosys Internship · NLP, RAG & Streamlit Pipeline",
       category: "AI / ML",
       featured: true,
       description: "Machine learning system for sentiment classification and consumer market trend predictions equipped with RAG and vector database contextual retrieval.",
-      longDescription: "Engineered an end-to-end data processing and model inference pipeline. Applies advanced natural language processing (NLP), text normalization, and transformer embeddings to consumer sentiment streams. Integrated Retrieval-Augmented Generation (RAG) with Pinecone vector database to deliver enriched contextual analysis.",
-      technologies: ["Python", "Scikit-learn", "NLP", "LLMs", "RAG", "Pinecone", "Pandas", "NumPy", "Hugging Face"],
-      githubUrl: "https://github.com/guru2005-z",
+      longDescription: "Engineered during the Infosys Springboard Virtual Internship. End-to-end data processing and model inference pipeline applying advanced NLP, text normalization, and transformer embeddings to consumer sentiment streams. Integrated Retrieval-Augmented Generation (RAG) with Pinecone vector database and deployed an interactive dashboard on Streamlit Cloud.",
+      technologies: ["Python", "Streamlit", "Scikit-learn", "NLP", "LLMs", "RAG", "Pinecone", "Pandas", "NumPy", "Hugging Face"],
+      liveUrl: "https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/",
+      githubUrl: "https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster",
       metrics: [
         "High accuracy sentiment classification on benchmark consumer feedback",
         "Sub-150ms semantic search latency via Pinecone indexing",
         "Automated pipeline for tokenization, lemmatization and TF-IDF feature sets"
       ],
       keyFeatures: [
+        "Interactive Streamlit web dashboard for live sentiment querying",
         "Multi-class sentiment prediction (Bullish, Neutral, Bearish)",
         "RAG-augmented contextual question answering across quarterly reports",
         "Pinecone vector index integration for continuous similarity search",
-        "Confusion matrix and model evaluation reporting suite",
-        "REST API serving inference models for client applications"
+        "Confusion matrix and model evaluation reporting suite"
       ],
-      architectureNotes: "Python ML architecture utilizing scikit-learn model serialization, Pinecone vector embeddings for RAG retrieval, and pandas data cleaning pipelines."
+      architectureNotes: "Python ML architecture utilizing scikit-learn model serialization, Pinecone vector embeddings for RAG retrieval, and Streamlit cloud deployment."
     },
     {
       id: "cybershield-sentinel",
@@ -324,12 +325,14 @@ export const PORTFOLIO_DATA = {
       company: "Infosys Springboard",
       location: "Virtual",
       period: "Jan 2026 – Mar 2026",
+      liveLink: "https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/",
+      githubUrl: "https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster",
       bullets: [
-        "Developed an AI-based consumer sentiment analysis pipeline using NLP and machine learning techniques.",
+        "Developed an AI-based consumer sentiment analysis pipeline using NLP and machine learning techniques deployed live on Streamlit Cloud.",
         "Executed data preprocessing, feature engineering (TF-IDF & embedding representations), and cross-validation.",
         "Gained direct industry experience evaluating AI solutions for production enterprise use cases."
       ],
-      tech: ["Python", "NLP", "Machine Learning", "Scikit-learn", "Pandas"]
+      tech: ["Python", "Streamlit", "NLP", "Machine Learning", "Scikit-learn", "Pandas"]
     }
   ]
 };

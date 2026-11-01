@@ -56,11 +56,19 @@ export const RAG_KNOWLEDGE_BASE: KnowledgeChunk[] = [
   },
   {
     id: 'ai-sentiment-forecaster',
-    title: 'AI Market Trend & Consumer Sentiment Forecaster',
+    title: 'AI Market Trend & Consumer Sentiment Forecaster (Infosys Springboard)',
     category: 'Project',
-    keywords: ['sentiment', 'forecaster', 'nlp', 'llm', 'rag', 'pinecone', 'scikit-learn', 'python', 'vector'],
-    content: 'An end-to-end predictive analytics engine analyzing customer sentiment from 50,000+ unstructured financial news articles and reviews. Built with Python, Scikit-learn, RoBERTa/LLMs, Pinecone vector database for RAG retrieval, and interactive Dash visualizations.',
-    highlight: 'RAG retrieval pipeline with Pinecone vector DB analyzing 50,000+ reviews.'
+    keywords: ['sentiment', 'forecaster', 'nlp', 'llm', 'rag', 'pinecone', 'scikit-learn', 'python', 'vector', 'infosys', 'internship', 'streamlit', 'live'],
+    content: 'An end-to-end predictive analytics engine analyzing customer sentiment from 50,000+ unstructured financial news articles and reviews. Developed during Guravaiah\'s Infosys Springboard Virtual Internship. Built with Python, Scikit-learn, RoBERTa/LLMs, and Pinecone vector database for RAG retrieval. Deployed live as an interactive Streamlit web application at https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/. Open source GitHub code: https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster.',
+    highlight: 'Infosys Internship project live at Streamlit Cloud with RAG retrieval pipeline and Pinecone vector DB.'
+  },
+  {
+    id: 'experience-infosys-springboard',
+    title: 'Infosys Springboard Virtual Internship - AI Research Intern',
+    category: 'Project',
+    keywords: ['infosys', 'springboard', 'internship', 'intern', 'ai', 'research', 'sentiment', 'market', 'trend', 'forecaster', 'streamlit'],
+    content: 'Guravaiah completed the Infosys Springboard Virtual AI Research Internship (Jan 2026 – Mar 2026). During this internship, he engineered the AI Market Trend & Consumer Sentiment Forecaster, implementing NLP pipelines, feature extraction, TF-IDF, sentiment classification, and RAG contextual retrieval. Live Streamlit App: https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/ | GitHub: https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster',
+    highlight: 'Infosys Springboard Virtual Internship building AI sentiment forecasting pipeline live on Streamlit.'
   },
   {
     id: 'hackathon-cybershield',

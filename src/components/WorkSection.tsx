@@ -116,6 +116,26 @@ export const WorkSection: React.FC = () => {
                   internship
                 </span>
               </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#d41514] hover:underline"
+                >
+                  <span>Live App (Streamlit)</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+                <a
+                  href="https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#6e6b63] hover:text-[#161514] hover:underline"
+                >
+                  <span>GitHub</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
 
             <div>
@@ -128,22 +148,26 @@ export const WorkSection: React.FC = () => {
             </div>
 
             <p className="text-sm text-[#161514] leading-relaxed">
-              Developed an AI-based consumer sentiment analysis system using <mark>NLP</mark> and machine learning techniques, applying preprocessing, feature extraction, and model validation.
+              Developed an AI-based consumer sentiment analysis system using <mark>NLP</mark> and machine learning techniques, deploying an interactive live forecaster dashboard on <mark>Streamlit Cloud</mark>.
             </p>
 
             <ul className="flex flex-col gap-2 text-xs sm:text-sm text-[#6e6b63]">
               <li className="flex items-start gap-2">
                 <span className="text-[#161514] mt-1">•</span>
-                <span>Gained hands-on experience designing and evaluating AI solutions for production enterprise use cases.</span>
+                <span>Designed end-to-end data processing and model inference pipeline with RAG and vector retrieval.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#161514] mt-1">•</span>
                 <span>Implemented text normalization, TF-IDF representations, and scikit-learn model benchmarking.</span>
               </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#161514] mt-1">•</span>
+                <span>Shipped public web dashboard on Streamlit with interactive sentiment visualization and market metrics.</span>
+              </li>
             </ul>
 
             <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#f0ede6]">
-              {['Python', 'Scikit-learn', 'NLP', 'Machine Learning', 'Pandas', 'NumPy'].map((tech) => (
+              {['Python', 'Streamlit', 'Scikit-learn', 'NLP', 'Machine Learning', 'RAG', 'Pandas'].map((tech) => (
                 <span key={tech} className="px-2 py-0.5 rounded bg-[#f0ede6] text-[11px] font-mono text-[#161514]">
                   {tech}
                 </span>

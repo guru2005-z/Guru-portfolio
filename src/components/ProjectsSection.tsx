@@ -121,10 +121,10 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
     {
       id: 'ai-forecaster',
       index: 'P/03',
-      title: 'AI Consumer Sentiment Forecaster',
-      stack: 'Python · Scikit-learn · NLP · RAG · Pinecone',
+      title: 'AI Consumer Sentiment & Market Forecaster',
+      stack: 'Python · Scikit-learn · NLP · RAG · Pinecone · Streamlit',
       year: '2026',
-      subtitle: '2026 · AI / Machine Learning Research',
+      subtitle: '2026 · Infosys Internship Project · Streamlit Live',
       summary: 'Market sentiment prediction system with vector database grounding and RAG for contextual financial trend analysis.',
       flowNodes: ['sentiment stream', 'tokenization', 'embed (all-MiniLM)', 'retrieve k=8', 'gemini 3.8', 'trend forecast'],
       failureNodes: ['scikit-learn fallback', 'cached baseline', 'plain summary'],
@@ -134,15 +134,17 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
         { label: 'Ambiguous sentiment text', note: 'Prompt flags neutral uncertainty rather than hallucinating market trajectory.' }
       ],
       facts: [
+        'Engineered during Infosys Springboard Virtual AI Research Internship.',
+        'Deployed live interactive web dashboard on Streamlit Cloud.',
         'Integrated Retrieval-Augmented Generation (RAG) using Pinecone vector database.',
         'Preprocessing pipeline implementing tokenization, lemmatization and TF-IDF feature extraction.',
-        'Evaluated sentiment models across quarterly financial commentary datasets.',
         'Zero-hallucination guard: system requires retrieved context citation for market claims.'
       ],
-      chips: ['Python', 'NLP', 'Scikit-learn', 'Pinecone', 'LLMs', 'RAG', 'Pandas'],
-      githubUrl: 'https://github.com/guru2005-z',
-      sourcePath: 'source · ai-forecaster: ingest.py, vector_store.py, rag_pipeline.py',
-      agentPrompt: 'How does the AI Sentiment Forecaster combine RAG with Pinecone?'
+      chips: ['Python', 'Streamlit', 'NLP', 'Scikit-learn', 'Pinecone', 'LLMs', 'RAG', 'Pandas'],
+      liveUrl: 'https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/',
+      githubUrl: 'https://github.com/guru2005-z/AI-Powered-Market-Trend-Consumer-Sentiment-Forecaster',
+      sourcePath: 'source · ai-forecaster: app.py, ingest.py, vector_store.py, rag_pipeline.py',
+      agentPrompt: 'Tell me about Guravaiah\'s Infosys AI Consumer Sentiment Forecaster live app'
     },
     {
       id: 'cybershield',
