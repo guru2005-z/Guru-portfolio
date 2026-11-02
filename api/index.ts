@@ -26,10 +26,13 @@ Key Facts about Guravaiah Katta:
 - GitHub: https://github.com/guru2005-z (also https://github.com/guravaiahkatta/)
 - Primary Freelance Project: Gully United - Cricket ground booking platform live at https://gully-united-xlv.vercel.app/. Built with Java, Spring Boot, React, TypeScript, PostgreSQL, JPA/Hibernate, Spring Security, JWT, Razorpay payments, double-booking prevention, QR ticket verification, and Google Maps.
 - Other Key Projects:
-  1. KhetConnect - Hyperlocal Agricultural Labour Platform (Spring Boot, React, PostgreSQL, Tailwind, 5km radius job discovery).
-  2. AI-Powered Market Trend & Consumer Sentiment Forecaster (Python, Scikit-learn, NLP, LLMs, RAG, Pinecone vector database).
-  3. CyberShield Sentinel - 1st Place Cybersecurity Hackathon winner.
-  4. MediCare Connect Pro - 2nd Place Medicare Web Application Competition winner.
+  1. HealthGuard AI - Wearable Smart Health Platform live at https://health-guard-ai-wearable-smart-heal.vercel.app/ (GitHub: https://github.com/guru2005-z/HealthGuard-AI---Wearable-Smart-Health-Platform). Web Bluetooth GATT (0x180D/0x180F) streaming, deterministic clinical safety triage (AHA/ACC, WHO), and Gemini 2.5 Flash clinical RAG assistant.
+  2. AI-Powered Market Trend & Consumer Sentiment Forecaster - Infosys Springboard internship project deployed on Streamlit (https://guru2005-z-ai-powered-market-trend-consumer-sen-srcuiapp-dzdssq.streamlit.app/).
+  3. NBKRIST IEEE Portal - Official IEEE Student Branch web platform live at https://nbkristieee.in (NexusVerse-2K26 symposium).
+  4. HackSpirit Hackathon Hub - Campus hackathon arena live at https://hackspirit.fun.
+  5. KhetConnect - Hyperlocal Agricultural Labour Platform (Spring Boot, React, PostgreSQL, Tailwind, 5km radius job discovery).
+  6. CyberShield Sentinel - 1st Place Cybersecurity Hackathon winner (Supraja Technologies CTF, Best Student award).
+  7. MediCare Connect Pro - 2nd Place Medicare Web Application Competition winner.
 - Certifications: Microsoft Certified: Azure Fundamentals (AZ-900) - Credential ID: 5B48115BB42E21FC. Kaggle GenAI 2025 Agents Intensive Capstone.
 - Algorithms & DSA: Solved 300+ Data Structures and Algorithms problems.
 - Availability: Open for Software Engineering internships, full-time junior engineer roles, and high-impact freelance projects.

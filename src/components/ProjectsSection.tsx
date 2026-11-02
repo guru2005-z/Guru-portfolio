@@ -133,8 +133,49 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
       }
     },
     {
-      id: 'ai-forecaster',
+      id: 'healthguard-ai',
       index: 'P/02',
+      title: 'HealthGuard AI',
+      stack: 'React 19 · Web Bluetooth · Gemini 2.5',
+      year: '2026',
+      subtitle: '2026 · Wearable Smart Health Platform · BLE GATT & Gemini Clinical RAG',
+      summary: 'Medical-grade physiological surveillance platform streaming live Bluetooth smartwatch vitals (Fastrack, Apple, Galaxy, Garmin) with deterministic clinical safety triage and Google Gemini 2.5 Flash clinical RAG assistant.',
+      flowNodes: ['smartwatch ble', 'gatt 0x180d', 'vitals stream', 'deterministic triage', 'local cache', 'gemini 2.5 flash rag', 'clinical monitor'],
+      failureNodes: ['virtual gatt bridge fallback', 'local storage cache', 'emergency triage modal'],
+      sims: [
+        { label: 'Normal telemetry', note: '72 BPM streamed via BLE GATT 0x180D; normal sinus rhythm. SpO2: 98%.' },
+        { label: 'Tachycardia spike', note: 'HR exceeded 160 bpm: deterministic triage triggered Emergency Modal ahead of AI model.' },
+        { label: 'BLE signal drop', note: 'Virtual GATT bridge auto-engaged; restored cached baseline vitals.' },
+        { label: 'Clinical RAG query', note: 'Gemini 2.5 Flash retrieved clinical knowledge references in 134ms.' }
+      ],
+      facts: [
+        'Direct Web Bluetooth GATT integration using standard 0x180D (Heart Rate) & 0x180F (Battery) services.',
+        'Bluetooth device search & remembered devices cache in localStorage with 1-click quick reconnect.',
+        'Deterministic clinical safety triage executing ahead of AI models for critical thresholds (AHA/ACC, WHO).',
+        'Google Gemini 2.5 Flash clinical RAG assistant providing evidence-backed physiological explanations.',
+        'Dynamic ECG-style animated cardiac waveform and continuous biometric surveillance grid.'
+      ],
+      chips: ['React 19', 'TypeScript', 'Web Bluetooth API', 'Gemini 2.5 Flash', 'Clinical RAG', 'Tailwind CSS v4', 'Express', 'Vercel'],
+      liveUrl: 'https://health-guard-ai-wearable-smart-heal.vercel.app/',
+      githubUrl: 'https://github.com/guru2005-z/HealthGuard-AI---Wearable-Smart-Health-Platform',
+      sourcePath: 'source · healthguard: bluetooth.ts, safetyTriageService.ts, ragService.ts',
+      agentPrompt: 'Explain the Web Bluetooth architecture and Gemini clinical RAG in HealthGuard AI',
+      preview: {
+        tag: 'HEALTHGUARD AI · MEDICAL GRADE',
+        domain: 'health-guard-ai-wearable-smart-heal.vercel.app',
+        heading: 'Wearable Smart Health Platform & Clinical RAG',
+        rows: [
+          { k: 'Bluetooth', v: 'Web Bluetooth GATT (0x180D Heart Rate)' },
+          { k: 'Clinical AI', v: 'Google Gemini 2.5 Flash RAG Assistant' },
+          { k: 'Safety Triage', v: 'Deterministic Rule-First Critical Filter' }
+        ],
+        status: 'Production Live App · Vercel',
+        accent: '#ef4444'
+      }
+    },
+    {
+      id: 'ai-forecaster',
+      index: 'P/03',
       title: 'Consumer Sentiment Forecaster',
       stack: 'Python · Scikit-learn · RAG',
       year: '2026',
@@ -175,7 +216,7 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
     },
     {
       id: 'nbkrist-ieee',
-      index: 'P/03',
+      index: 'P/04',
       title: 'NBKRIST IEEE Portal',
       stack: 'React · TypeScript · Tailwind',
       year: '2026',
@@ -212,7 +253,7 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
     },
     {
       id: 'hackspirit',
-      index: 'P/04',
+      index: 'P/05',
       title: 'HackSpirit Hackathon Hub',
       stack: 'React · TypeScript · Cloud',
       year: '2025',
@@ -249,7 +290,7 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
     },
     {
       id: 'khetconnect',
-      index: 'P/05',
+      index: 'P/06',
       title: 'KhetConnect',
       stack: 'Spring Boot · React · PostgreSQL',
       year: '2026',
@@ -287,7 +328,7 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
     },
     {
       id: 'cybershield',
-      index: 'P/06',
+      index: 'P/07',
       title: 'CyberShield Sentinel',
       stack: 'Python · Docker · Network Forensics',
       year: '2025',
@@ -326,7 +367,7 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
     },
     {
       id: 'medicare',
-      index: 'P/07',
+      index: 'P/08',
       title: 'MediCare Connect Pro',
       stack: 'React · Spring Boot · PostgreSQL',
       year: '2026',
@@ -431,6 +472,44 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                 ) : (
                   /* Project Starting Page Live Screen Mockup */
                   <div className="w-full rounded-lg bg-[#0d0b1a] border border-[#2b274c] p-2.5 flex flex-col gap-1.5 font-mono shadow-inner text-xs">
+                    {hoveredProject.id === 'healthguard-ai' && (
+                      <div className="flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">
+                          <span className="font-bold text-red-400 flex items-center gap-1.5">
+                            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                            HEALTHGUARD AI TELEMETRY
+                          </span>
+                          <span className="text-emerald-400 text-[9px] font-semibold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/30">
+                            BLE GATT CONNECTED
+                          </span>
+                        </div>
+                        <div className="bg-[#1e1b38] p-2 rounded border border-white/10 flex items-center justify-between">
+                          <div className="flex items-baseline gap-1.5">
+                            <span className="text-white font-extrabold text-lg tracking-tight">72</span>
+                            <span className="text-red-400 font-bold text-[10px]">BPM</span>
+                            <span className="text-neutral-400 text-[9px] ml-1">Normal Sinus</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-[10px]">
+                            <div className="text-right">
+                              <span className="text-neutral-400 text-[8px] block">SpO2</span>
+                              <span className="text-emerald-300 font-bold">98%</span>
+                            </div>
+                            <div className="text-right border-l border-white/10 pl-2">
+                              <span className="text-neutral-400 text-[8px] block">BP</span>
+                              <span className="text-sky-300 font-bold">120/80</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-[9px] text-neutral-300">
+                          <span className="text-emerald-400 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            Safety Triage: Normal
+                          </span>
+                          <span className="text-purple-300 font-semibold">Gemini 2.5 Flash RAG</span>
+                        </div>
+                      </div>
+                    )}
+
                     {hoveredProject.id === 'nbkrist-ieee' && (
                       <div className="flex flex-col gap-1.5">
                         <div className="flex items-center justify-between border-b border-white/10 pb-1 text-[10px]">

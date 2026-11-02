@@ -47,6 +47,30 @@ export const RAG_KNOWLEDGE_BASE: KnowledgeChunk[] = [
     highlight: 'Dynamic QR ticket passes and Google Maps navigation.'
   },
   {
+    id: 'healthguard-ai-overview',
+    title: 'HealthGuard AI - Wearable Smart Health Platform & Clinical Telemetry',
+    category: 'Project',
+    keywords: ['healthguard', 'health', 'wearable', 'smartwatch', 'telemetry', 'gemini', 'rag', 'bluetooth', 'ble', 'vitals', 'live', 'vercel'],
+    content: 'HealthGuard AI is a medical-grade full-stack wearable health surveillance platform live at https://health-guard-ai-wearable-smart-heal.vercel.app/ (GitHub: https://github.com/guru2005-z/HealthGuard-AI---Wearable-Smart-Health-Platform). It connects consumer smartwatches (Fastrack, Apple Watch, Samsung Galaxy Watch, Garmin, Polar) directly into clinical workflows using Web Bluetooth GATT (0x180D Heart Rate & 0x180F Battery), deterministic clinical safety triage (AHA/ACC, WHO rules), and Google Gemini 2.5 Flash clinical RAG assistant.',
+    highlight: 'Live at https://health-guard-ai-wearable-smart-heal.vercel.app/ streaming smartwatch vitals with Gemini 2.5 Flash clinical RAG.'
+  },
+  {
+    id: 'healthguard-ai-ble-architecture',
+    title: 'HealthGuard AI - Web Bluetooth GATT Architecture & Offline Virtual Bridge',
+    category: 'Architecture',
+    keywords: ['bluetooth', 'web bluetooth', 'gatt', '0x180d', '0x180f', 'heart rate', 'smartwatch', 'localstorage', 'cache', 'virtual bridge', 'fastrack', 'apple watch'],
+    content: 'HealthGuard AI uses the Web Bluetooth API (navigator.bluetooth) with GATT standard profiles 0x180D (Heart Rate Service) and 0x180F (Battery Service) to stream live telemetry. It features a persistent localStorage cache (healthguard_latest_ble_reading) for instant vitals recall, a device search filter bar, and a built-in virtual GATT bridge emulator that generates authentic BLE packets (Resting 72 bpm, Active 104 bpm) for testing in environments without physical Web Bluetooth hardware.',
+    highlight: 'Web Bluetooth GATT 0x180D/0x180F with persistent client caching and virtual hardware emulator.'
+  },
+  {
+    id: 'healthguard-ai-gemini-clinical-triage',
+    title: 'HealthGuard AI - Deterministic Safety Triage & Gemini 2.5 Flash Clinical RAG',
+    category: 'Architecture',
+    keywords: ['clinical triage', 'safety', 'deterministic', 'aha', 'acc', 'who', 'gemini 2.5 flash', 'emergency modal', 'rag', 'clinical', 'triage'],
+    content: 'HealthGuard AI operates a rule-first deterministic safety triage engine that executes ahead of any AI models to ensure critical emergencies (Severe Bradycardia <45 bpm, Extreme Tachycardia >160 bpm, Hypoxia <90% SpO2, Hypertensive Crisis) trigger immediate EMS emergency modals. In non-critical states, Google Gemini 2.5 Flash provides evidence-backed clinical explanations and contextual dialogue grounded in clinical medical knowledge bases.',
+    highlight: 'Deterministic rule-first emergency safety triage ahead of AI combined with Gemini 2.5 Flash clinical RAG.'
+  },
+  {
     id: 'khetconnect-platform',
     title: 'KhetConnect - Hyperlocal Agricultural Labour Hiring Platform',
     category: 'Project',

@@ -108,6 +108,32 @@ export const PORTFOLIO_DATA = {
       architectureNotes: "Layered Spring Boot architecture using DTO patterns, Spring Security stateless JWT filters, transactional booking lock isolation, and a decoupled React 19 client deployed on Vercel."
     },
     {
+      id: "healthguard-ai",
+      title: "HealthGuard AI",
+      subtitle: "Wearable Smart Health Telemetry & Gemini Clinical RAG Platform",
+      category: "Full-Stack",
+      featured: true,
+      description: "Medical-grade physiological surveillance platform streaming live Bluetooth smartwatch vitals (Fastrack, Apple, Galaxy, Garmin) with deterministic clinical safety triage and Google Gemini 2.5 Flash clinical RAG assistant.",
+      longDescription: "HealthGuard AI is a medical-grade full-stack wearable health platform designed to bridge consumer smartwatches directly into clinical workflows. Features Web Bluetooth GATT (0x180D Heart Rate & 0x180F Battery), device search with localStorage remembered devices, animated ECG waveform canvas, deterministic clinical safety triage (AHA/ACC, WHO rules) ahead of AI models, and Google Gemini 2.5 Flash clinical RAG assistant for evidence-backed health queries.",
+      technologies: ["React 19", "TypeScript", "Vite 8", "Tailwind CSS v4", "Web Bluetooth API", "Google Gemini 2.5 Flash", "Clinical RAG", "Express 4", "Node.js", "Vercel Serverless Functions", "Firebase Firestore"],
+      liveUrl: "https://health-guard-ai-wearable-smart-heal.vercel.app/",
+      githubUrl: "https://github.com/guru2005-z/HealthGuard-AI---Wearable-Smart-Health-Platform",
+      metrics: [
+        "Real-time BLE GATT streaming at standard 0x180D / 0x180F",
+        "Deterministic clinical safety triage executing ahead of AI",
+        "Sub-150ms Gemini 2.5 Flash RAG query response time"
+      ],
+      keyFeatures: [
+        "Web Bluetooth GATT browser-to-smartwatch direct pairing",
+        "Remembered devices cache in localStorage with 1-click quick reconnect",
+        "Deterministic rule-first safety filter triggering emergency triage modals for critical thresholds",
+        "Google Gemini 2.5 Flash clinical RAG assistant grounded in medical knowledge",
+        "Dynamic animated cardiac pulse waveform and continuous biometric surveillance grid",
+        "Offline virtual GATT bridge emulator generating authentic BLE packets for testing"
+      ],
+      architectureNotes: "Decoupled architecture with React 19 / Vite client utilizing Web Bluetooth API and localStorage cache, communicating via typed HTTP to Express / Vercel Serverless Functions running Gemini 2.5 Flash and clinical safety triage engines."
+    },
+    {
       id: "khetconnect",
       title: "KhetConnect",
       subtitle: "Hyperlocal Agricultural Labour & Farm Work Marketplace",
