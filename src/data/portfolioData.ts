@@ -199,6 +199,52 @@ export const PORTFOLIO_DATA = {
         "Secure prescription download with digital physician signature",
         "Responsive medical records portal accessible on any mobile device"
       ]
+    },
+    {
+      id: "nbkrist-ieee",
+      title: "NBKRIST IEEE Portal",
+      subtitle: "Official IEEE Student Branch Web Platform · Vice Chair",
+      category: "Full-Stack",
+      featured: true,
+      description: "Official web platform for the IEEE Student Branch at NBKRIST, centralizing memberships, symposium announcements (NexusVerse-2K26), and technical archives.",
+      longDescription: "Engineered and shipped by Guravaiah as Vice Chairperson of IEEE Student Branch NBKRIST. Deployed with a custom domain at https://nbkristieee.in, featuring dynamic event registrations, participant space, and automated QR pass validation.",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Jamstack", "Edge CDN"],
+      liveUrl: "https://nbkristieee.in",
+      githubUrl: "https://github.com/guru2005-z",
+      imageUrl: "/assets/nbkrist-ieee-preview.jpg",
+      metrics: [
+        "Sub-1s global edge delivery via CDN",
+        "100% mobile-responsive design across all device viewports",
+        "Centralized directory for officers and student memberships"
+      ],
+      keyFeatures: [
+        "NexusVerse-2K26 National Technical Symposium registration portal",
+        "Admin QR scanner and participant credential validation",
+        "Officer executive board directory and event archives"
+      ]
+    },
+    {
+      id: "hackspirit",
+      title: "HackSpirit Hackathon Hub",
+      subtitle: "Campus Hackathon Management & Team Registration Arena",
+      category: "Full-Stack",
+      featured: true,
+      description: "Production event platform for HackSpirit, managing team registrations, problem tracks, countdown timers, and sponsor showcases.",
+      longDescription: "Designed and launched as Vice Chairperson for university-wide hackathons. Live event website deployed at https://hackspirit.fun, providing a 5-hour code sprint portal with team check-in and track selection.",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Event Platform", "Cloud Hosting"],
+      liveUrl: "https://hackspirit.fun",
+      githubUrl: "https://github.com/guru2005-z",
+      imageUrl: "/assets/hackspirit-preview.jpg",
+      metrics: [
+        "45+ competitive teams registered and checked in",
+        "Zero-downtime performance during live sprint peak",
+        "Multi-track submission evaluation matrix"
+      ],
+      keyFeatures: [
+        "Real-time milestone countdown clock",
+        "Multi-track challenge problem explorer (AI/ML, Web3, Cyber)",
+        "StudentVerse Hub and sponsor showcase"
+      ]
     }
   ] as Project[],
 

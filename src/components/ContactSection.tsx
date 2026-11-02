@@ -11,13 +11,13 @@ interface ContactSectionProps {
 
 const sectionFadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.6, 
-      ease: [0.22, 1, 0.36, 1] 
-    } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1]
+    }
   }
 };
 
@@ -65,7 +65,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenAgent, onO
         })
       });
       const data = await res.json();
-      
+
       if (data?.success) {
         setSubmittedNotice(`Message delivered directly to Guravaiah's inbox (${email})! Thank you for reaching out.`);
       } else {
@@ -89,14 +89,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenAgent, onO
 
   return (
     <section id="contact" className="py-16 sm:py-24 border-b border-[#e6e3da]">
-      <motion.div 
+      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
         variants={sectionFadeUp}
         className="max-w-4xl mx-auto px-4 sm:px-6 text-left"
       >
-        
+
         {/* Section Header */}
         <div className="flex items-baseline justify-between border-b border-[#e6e3da] pb-3 mb-10">
           <h2 className="font-bold text-xl sm:text-2xl text-[#161514] flex items-center gap-2">

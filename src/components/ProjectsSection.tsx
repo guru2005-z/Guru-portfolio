@@ -197,16 +197,17 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
       sourcePath: 'source · nbkrist-ieee: App.tsx, EventsList.tsx, OfficerDirectory.tsx',
       agentPrompt: 'Tell me about the NBKRIST IEEE official portal built by Guravaiah',
       preview: {
-        tag: 'NBKRIST IEEE',
+        tag: 'NBKRIST IEEE · VICE CHAIR',
         domain: 'nbkristieee.in',
-        heading: 'Official IEEE Student Branch Web Portal',
+        heading: 'NexusVerse-2K26 Technical Symposium Portal',
         rows: [
-          { k: 'Role', v: 'Vice Chairperson Architecture' },
-          { k: 'Systems', v: 'Officer Directory, Memberships & Archives' },
-          { k: 'Performance', v: 'Sub-1s Global Edge Delivery' }
+          { k: 'Event', v: 'NexusVerse-2K26 National Symposium' },
+          { k: 'Systems', v: 'Admin Scanner, Participant Hub & Pass' },
+          { k: 'Role', v: 'Designed & Launched as Vice Chair' }
         ],
         status: 'Official Live Portal · nbkristieee.in',
-        accent: '#38bdf8'
+        accent: '#38bdf8',
+        image: '/assets/nbkrist-ieee-preview.jpg'
       }
     },
     {
@@ -233,16 +234,17 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
       sourcePath: 'source · hackspirit: Countdown.tsx, TrackExplorer.tsx, RegisterModal.tsx',
       agentPrompt: 'What is the HackSpirit platform developed by Guravaiah?',
       preview: {
-        tag: 'HACKSPIRIT',
+        tag: 'HACKSPIRIT · IEEE SB EVENT',
         domain: 'hackspirit.fun',
-        heading: 'University Hackathon Arena & Team Hub',
+        heading: 'HackSpirit Hackathon Arena & Code Sprint Hub',
         rows: [
-          { k: 'Capacity', v: '45+ Team Registrations & Judging Rubrics' },
-          { k: 'Tracks', v: 'AI/ML, Web3 & Cybersecurity Challenges' },
-          { k: 'Schedule', v: '36-Hour Real-time Milestone Tracker' }
+          { k: 'Sprint', v: '5-Hour Code, Create & Elevate Sprint' },
+          { k: 'Hub', v: 'StudentVerse Hub, Schedule & Tracks' },
+          { k: 'Role', v: 'Designed & Developed as Vice Chair' }
         ],
         status: 'Live Platform · hackspirit.fun',
-        accent: '#c084fc'
+        accent: '#c084fc',
+        image: '/assets/hackspirit-preview.jpg'
       }
     },
     {
@@ -393,14 +395,14 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
               </div>
 
               {/* Floating Preview Window Card */}
-              <div className="w-[360px] rounded-xl overflow-hidden border border-[#3b3561] bg-[#161426] shadow-2xl p-3.5 text-left flex flex-col gap-2.5">
+              <div className="w-[380px] rounded-xl overflow-hidden border border-[#3b3561] bg-[#161426] shadow-2xl p-3.5 text-left flex flex-col gap-2.5">
                 {/* Top Bar with window controls */}
                 <div className="flex items-center justify-between border-b border-[#2b274c] pb-2">
                   <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
-                    <span className="font-mono text-[10px] text-[#a5a0cb] ml-2 truncate max-w-[210px]">
+                    <span className="font-mono text-[10px] text-[#a5a0cb] ml-2 truncate max-w-[220px]">
                       {hoveredProject.preview.domain}
                     </span>
                   </div>
@@ -411,16 +413,19 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
 
                 {/* Project Starting Page: High-Res Real Screenshot if available, else Mock UI */}
                 {hoveredProject.preview.image ? (
-                  <div className="relative w-full h-[190px] rounded-lg overflow-hidden bg-black/90 border border-[#2b274c] shadow-inner group">
+                  <div className="relative w-full h-[195px] rounded-lg overflow-hidden bg-black/90 border border-[#2b274c] shadow-inner group">
                     <img
                       src={hoveredProject.preview.image}
                       alt={hoveredProject.title}
                       className="w-full h-full object-cover object-top"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[10px] font-mono px-2 py-1 rounded bg-black/80 backdrop-blur-md border border-white/10">
-                      <span className="text-emerald-400 font-bold truncate">● {hoveredProject.preview.status}</span>
-                      <span className="text-white/80 shrink-0 font-medium">Starting Page ↗</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[10px] font-mono px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-white/15">
+                      <span className="text-emerald-400 font-semibold truncate flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                        <span className="truncate">{hoveredProject.preview.domain}</span>
+                      </span>
+                      <span className="text-white/90 shrink-0 font-medium ml-2">Live UI ↗</span>
                     </div>
                   </div>
                 ) : (
@@ -509,9 +514,9 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                 {/* Metrics / Details Table */}
                 <div className="flex flex-col gap-1 py-1 text-[11px] font-mono border-t border-[#2b274c]/80">
                   {hoveredProject.preview.rows.map((row, rIdx) => (
-                    <div key={rIdx} className="flex items-center justify-between gap-2">
-                      <span className="text-[#847ea8] text-[10px] uppercase">{row.k}:</span>
-                      <span className="text-[#f1f0f8] font-semibold truncate max-w-[210px] text-[10px]">
+                    <div key={rIdx} className="flex items-center justify-between gap-3">
+                      <span className="text-[#847ea8] text-[10px] uppercase shrink-0">{row.k}:</span>
+                      <span className="text-[#f1f0f8] font-semibold truncate max-w-[240px] text-[10px] text-right">
                         {row.v}
                       </span>
                     </div>
@@ -519,12 +524,12 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
                 </div>
 
                 {/* Status Badge */}
-                <div className="flex items-center justify-between pt-0.5 border-t border-[#2b274c]/60">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-950/70 text-emerald-300 border border-emerald-500/30">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>{hoveredProject.preview.status}</span>
+                <div className="flex items-center justify-between pt-1 border-t border-[#2b274c]/60 gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 truncate max-w-[250px]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                    <span className="truncate">{hoveredProject.preview.status}</span>
                   </span>
-                  <span className="text-[10px] font-mono text-[#a5a0cb]">
+                  <span className="text-[10px] font-mono text-[#a5a0cb] shrink-0">
                     Click to view ↗
                   </span>
                 </div>
