@@ -170,7 +170,8 @@ export const ProjectsSection: React.FC<{ onAskAgent: (query: string) => void }> 
           { k: 'Safety Triage', v: 'Deterministic Rule-First Critical Filter' }
         ],
         status: 'Production Live App · Vercel',
-        accent: '#ef4444'
+        accent: '#ef4444',
+        image: '/assets/healthguard-ai-preview.jpg'
       }
     },
     {

@@ -118,6 +118,7 @@ export const PORTFOLIO_DATA = {
       technologies: ["React 19", "TypeScript", "Vite 8", "Tailwind CSS v4", "Web Bluetooth API", "Google Gemini 2.5 Flash", "Clinical RAG", "Express 4", "Node.js", "Vercel Serverless Functions", "Firebase Firestore"],
       liveUrl: "https://health-guard-ai-wearable-smart-heal.vercel.app/",
       githubUrl: "https://github.com/guru2005-z/HealthGuard-AI---Wearable-Smart-Health-Platform",
+      imageUrl: "/assets/healthguard-ai-preview.jpg",
       metrics: [
         "Real-time BLE GATT streaming at standard 0x180D / 0x180F",
         "Deterministic clinical safety triage executing ahead of AI",
