@@ -101,7 +101,10 @@ export default function App() {
           <EducationSection onOpenCertModal={handleOpenCertModal} />
 
           {/* 08 Contact */}
-          <ContactSection onOpenAgent={() => setCurrentMode('agent')} />
+          <ContactSection 
+            onOpenAgent={() => setCurrentMode('agent')} 
+            onOpenResumeModal={() => setIsResumeModalOpen(true)}
+          />
         </main>
       )}
 

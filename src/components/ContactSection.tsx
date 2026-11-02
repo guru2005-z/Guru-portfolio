@@ -6,6 +6,7 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 interface ContactSectionProps {
   onOpenAgent: () => void;
+  onOpenResumeModal?: () => void;
 }
 
 const sectionFadeUp: Variants = {
@@ -20,7 +21,7 @@ const sectionFadeUp: Variants = {
   }
 };
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenAgent }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenAgent, onOpenResumeModal }) => {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedNotice, setSubmittedNotice] = useState<string>('');
@@ -65,13 +66,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenAgent }) =
       });
       const data = await res.json();
       
-      if (data?.details?.message && data.details.message.includes('Activation')) {
-        setActivationNotice(data.details.message);
+      if (data?.success) {
+        setSubmittedNotice(`Message delivered directly to Guravaiah's inbox (${email})! Thank you for reaching out.`);
       } else {
-        setSubmittedNotice(`Message sent directly to ${email}! Guravaiah typically responds within a few hours.`);
+        setSubmittedNotice(`Message processed! Guravaiah typically responds within a few hours at ${email}.`);
       }
     } catch {
-      setSubmittedNotice(`Message processed! You can also reach Guravaiah directly at ${email}.`);
+      setSubmittedNotice(`Message sent! You can also reach Guravaiah directly at ${email}.`);
     }
 
     setIsSubmitting(false);
@@ -300,14 +301,26 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenAgent }) =
             <span className="font-mono text-xs">↗</span>
           </a>
 
-          <a
-            href={PORTFOLIO_DATA.personal.resumePath}
-            download="Guravaiah_Katta_Resume.pdf"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d5d1c5] bg-[#ffffff] hover:bg-[#f0ede6] text-[#161514] text-xs sm:text-sm font-medium transition-colors"
-          >
-            <span>Resume</span>
-            <span className="font-mono text-xs">↗</span>
-          </a>
+          {onOpenResumeModal ? (
+            <button
+              type="button"
+              onClick={onOpenResumeModal}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d5d1c5] bg-[#ffffff] hover:bg-[#f0ede6] text-[#161514] text-xs sm:text-sm font-medium transition-colors cursor-pointer"
+            >
+              <span>Resume</span>
+              <span className="font-mono text-xs">↗</span>
+            </button>
+          ) : (
+            <a
+              href={PORTFOLIO_DATA.personal.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#d5d1c5] bg-[#ffffff] hover:bg-[#f0ede6] text-[#161514] text-xs sm:text-sm font-medium transition-colors"
+            >
+              <span>Resume</span>
+              <span className="font-mono text-xs">↗</span>
+            </a>
+          )}
         </div>
 
         {/* Fine print at bottom */}

@@ -90,15 +90,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Action CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              {/* Primary Resume Download Button */}
-              <a
-                href={PORTFOLIO_DATA.personal.resumePath}
-                download="Guravaiah_Katta_Resume.pdf"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#D41514] hover:bg-[#b0100f] text-white font-mono text-xs sm:text-sm uppercase tracking-wider font-bold shadow-[0_0_20px_rgba(212,21,20,0.35)] transition-all"
+              {/* Primary Resume View Button */}
+              <button
+                type="button"
+                onClick={onOpenResume}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#D41514] hover:bg-[#b0100f] text-white font-mono text-xs sm:text-sm uppercase tracking-wider font-bold shadow-[0_0_20px_rgba(212,21,20,0.35)] transition-all cursor-pointer"
               >
-                <Download className="w-4 h-4" />
-                <span>Download Resume</span>
-              </a>
+                <FileText className="w-4 h-4" />
+                <span>View Resume</span>
+              </button>
 
               {/* View Resume in App */}
               <button

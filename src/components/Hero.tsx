@@ -268,14 +268,14 @@ export const Hero: React.FC<HeroProps> = ({
               </button>
 
               {/* Resume */}
-              <a
-                href={PORTFOLIO_DATA.personal.resumePath}
-                download="Guravaiah_Katta_Resume.pdf"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg border border-[#d5d1c5] bg-[#ffffff] hover:bg-[#f0ede6] text-[#161514] text-xs sm:text-sm font-medium transition-colors"
+              <button
+                type="button"
+                onClick={onOpenResumeModal}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg border border-[#d5d1c5] bg-[#ffffff] hover:bg-[#f0ede6] text-[#161514] text-xs sm:text-sm font-medium transition-colors cursor-pointer"
               >
                 <span>Resume</span>
                 <span className="font-mono text-xs">↗</span>
-              </a>
+              </button>
 
               {/* GitHub */}
               <a

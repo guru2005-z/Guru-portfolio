@@ -55,17 +55,28 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           <div className="flex items-center gap-2">
             <a
               href={PORTFOLIO_DATA.personal.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[#282828] bg-[#161616] text-[#CDCBCA] hover:text-white hover:border-[#444] font-mono text-xs transition-colors"
+              title="Open raw PDF in new browser tab"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>Open in Tab</span>
+            </a>
+
+            <a
+              href={PORTFOLIO_DATA.personal.resumePath}
               download="Guravaiah_Katta_Resume.pdf"
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg bg-[#D41514] hover:bg-[#b0100f] text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-[0_0_15px_rgba(212,21,20,0.3)]"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg bg-[#D41514] hover:bg-[#b0100f] text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-[0_0_15px_rgba(212,21,20,0.3)] cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Download PDF</span>
-              <span className="sm:hidden">PDF</span>
+              <span className="sm:hidden">Download</span>
             </a>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-lg border border-[#282828] bg-[#161616] text-[#8E8D8C] hover:text-white hover:border-[#444] transition-colors"
+              className="p-2 rounded-lg border border-[#282828] bg-[#161616] text-[#8E8D8C] hover:text-white hover:border-[#444] transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>

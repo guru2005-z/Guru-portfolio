@@ -131,14 +131,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume, onOpenCertModal })
           </div>
 
           <div className="flex items-center gap-3">
-            <a
-              href={PORTFOLIO_DATA.personal.resumePath}
-              download="Guravaiah_Katta_Resume.pdf"
-              className="inline-flex items-center gap-1 text-[11px] text-[#CDCBCA] hover:text-[#D41514] transition-colors"
+            <button
+              type="button"
+              onClick={onOpenResume}
+              className="inline-flex items-center gap-1 text-[11px] text-[#CDCBCA] hover:text-[#D41514] transition-colors cursor-pointer"
             >
-              <Download className="w-3 h-3" />
-              <span>Resume PDF</span>
-            </a>
+              <FileText className="w-3 h-3 text-[#D41514]" />
+              <span>Resume</span>
+            </button>
 
             <button
               onClick={scrollToTop}

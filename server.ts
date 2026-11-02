@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 import { GoogleGenAI } from '@google/genai';
 import { RAG_KNOWLEDGE_BASE, retrieveRelevantKnowledge } from './src/data/ragKnowledgeBase';
 
@@ -170,47 +171,141 @@ app.get('/api/rag/corpus', (_req: Request, res: Response) => {
   });
 });
 
-// API endpoint for client inquiries - forwards to FormSubmit to deliver actual email to Guravaiah
+// API endpoint for client inquiries - sends email directly via Gmail SMTP with Google App Password
 app.post('/api/contact', async (req: Request, res: Response) => {
   try {
     const { name, email, projectType, message } = req.body;
-    const targetEmail = 'kattaguravaiah00@gmail.com';
-    console.log(`[CLIENT INQUIRY RECEIVED] From: ${name} (${email}) | Message: ${message}`);
+    const senderName = name?.trim() || 'Portfolio Visitor';
+    const senderEmail = email?.trim() || 'no-reply@portfolio.visitor';
+    const inquiryMessage = message?.trim() || '(No message content)';
+    const inquiryType = projectType?.trim() || 'General Inquiry / Opportunity';
 
-    const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Origin': req.headers.origin || 'http://localhost:3000',
-        'Referer': req.headers.referer || 'http://localhost:3000/'
-      },
-      body: JSON.stringify({
-        name: name || 'Portfolio Visitor',
-        email: email || 'visitor@example.com',
-        message: message || '(No message provided)',
-        _subject: `[Portfolio Inquiry] from ${name || 'Visitor'}`,
-        _replyto: email
-      })
+    const smtpUser = process.env.SMTP_USER || 'kattaguravaiah00@gmail.com';
+    const smtpPass = (process.env.SMTP_PASS || 'wklhxijdaehnvklp').replace(/\s+/g, '');
+    const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || 'kattaguravaiah00@gmail.com';
+
+    console.log(`[CONTACT EMAIL INCOMING] From: ${senderName} <${senderEmail}> | Type: ${inquiryType}`);
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: smtpUser,
+        pass: smtpPass
+      }
     });
 
-    const data = await formSubmitRes.json().catch(() => ({}));
-    console.log('[FormSubmit result]:', data);
+    const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+    // 1. Send notification email to Guravaiah
+    const mailInfo = await transporter.sendMail({
+      from: `"${senderName} via Portfolio" <${smtpUser}>`,
+      to: receiverEmail,
+      replyTo: senderEmail,
+      subject: `⚡ [Portfolio Inquiry] from ${senderName} — ${inquiryType}`,
+      text: `New Portfolio Message received from: ${senderName}\nEmail: ${senderEmail}\nType: ${inquiryType}\nTime (IST): ${timestamp}\n\nMessage:\n${inquiryMessage}\n\n---\nDelivered via Guravaiah Katta's Portfolio Contact Engine`,
+      html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <div style="background: #161514; color: #ffffff; padding: 24px; text-align: left;">
+            <div style="font-size: 11px; font-family: monospace; text-transform: uppercase; letter-spacing: 1.5px; color: #d41514; font-weight: bold;">
+              NEW CLIENT INQUIRY
+            </div>
+            <h2 style="margin: 6px 0 0 0; font-size: 20px; font-weight: 700; color: #ffffff;">
+              ${senderName} sent you a message
+            </h2>
+            <div style="font-size: 12px; color: #9ca3af; margin-top: 4px;">
+              Received on ${timestamp} (IST)
+            </div>
+          </div>
+
+          <div style="padding: 24px;">
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+              <tr>
+                <td style="padding: 8px 0; color: #6b7280; font-size: 13px; font-weight: 600; width: 120px;">Sender:</td>
+                <td style="padding: 8px 0; color: #111827; font-size: 14px; font-weight: 700;">${senderName}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #6b7280; font-size: 13px; font-weight: 600;">Email:</td>
+                <td style="padding: 8px 0; color: #111827; font-size: 14px;">
+                  <a href="mailto:${senderEmail}" style="color: #2563eb; text-decoration: none; font-weight: 600;">${senderEmail}</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #6b7280; font-size: 13px; font-weight: 600;">Inquiry Type:</td>
+                <td style="padding: 8px 0; color: #111827; font-size: 14px;">
+                  <span style="background: #f3f4f6; color: #1f2937; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-family: monospace;">${inquiryType}</span>
+                </td>
+              </tr>
+            </table>
+
+            <div style="background: #f9fafb; border-left: 4px solid #161514; border-radius: 4px; padding: 16px; margin: 16px 0;">
+              <div style="font-size: 11px; font-family: monospace; text-transform: uppercase; color: #6b7280; margin-bottom: 8px; font-weight: bold;">
+                Message Content:
+              </div>
+              <p style="margin: 0; color: #1f2937; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${inquiryMessage}</p>
+            </div>
+
+            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
+              <a href="mailto:${senderEmail}?subject=Re: Portfolio Inquiry" style="display: inline-block; background: #161514; color: #ffffff; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-size: 13px; font-weight: 600;">
+                Reply to ${senderName} ↗
+              </a>
+            </div>
+          </div>
+
+          <div style="background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 14px 24px; font-size: 11px; color: #9ca3af; font-family: monospace; text-align: center;">
+            Guravaiah Katta · Full-Stack & AI Systems Developer · guru99.in
+          </div>
+        </div>
+      `
+    });
+
+    console.log(`[EMAIL DISPATCHED] ID: ${mailInfo.messageId}`);
+
+    // 2. Optionally send an automated confirmation to the sender if their email is valid
+    if (senderEmail.includes('@') && senderEmail.includes('.')) {
+      try {
+        await transporter.sendMail({
+          from: `"Guravaiah Katta" <${smtpUser}>`,
+          to: senderEmail,
+          subject: `Thanks for reaching out, ${senderName}! [Guravaiah Katta]`,
+          text: `Hi ${senderName},\n\nThank you for reaching out through my portfolio website! I have received your message regarding "${inquiryType}" and will review it promptly.\n\nBest regards,\nGuravaiah Katta\nFull-Stack Software Engineer & AI Systems Developer\nkattaguravaiah00@gmail.com | +91-9491501919\nhttps://guru99.in`,
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 540px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; padding: 24px;">
+              <h3 style="margin-top: 0; color: #161514; font-size: 18px;">Thank you for getting in touch, ${senderName}!</h3>
+              <p style="color: #374151; font-size: 14px; line-height: 1.6;">
+                I have received your message regarding <strong>${inquiryType}</strong> and will get back to you shortly.
+              </p>
+              <div style="background: #f9fafb; border-radius: 8px; padding: 12px 16px; margin: 16px 0; font-size: 13px; color: #4b5563;">
+                <em>"${inquiryMessage.slice(0, 160)}${inquiryMessage.length > 160 ? '...' : ''}"</em>
+              </div>
+              <p style="color: #6b7280; font-size: 13px; margin-bottom: 0;">
+                Warm regards,<br/>
+                <strong style="color: #111827;">Guravaiah Katta</strong><br/>
+                <span style="font-size: 12px; color: #9ca3af;">Full-Stack Software Engineer & AI Systems Developer</span><br/>
+                <a href="https://guru99.in" style="color: #2563eb; text-decoration: none; font-size: 12px;">guru99.in</a> · 
+                <a href="mailto:kattaguravaiah00@gmail.com" style="color: #2563eb; text-decoration: none; font-size: 12px;">kattaguravaiah00@gmail.com</a>
+              </p>
+            </div>
+          `
+        });
+      } catch (autoReplyErr) {
+        console.warn('Auto-reply skipped:', autoReplyErr);
+      }
+    }
 
     return res.json({
       success: true,
-      forwarded: true,
-      details: data,
-      notificationTarget: targetEmail,
-      message: data.message || 'Inquiry dispatched to email.'
+      delivered: true,
+      messageId: mailInfo.messageId,
+      notificationTarget: receiverEmail,
+      message: 'Message delivered directly to Guravaiah\'s inbox.'
     });
+
   } catch (err: any) {
-    console.error('Error forwarding contact email:', err);
-    return res.json({
-      success: true,
-      forwarded: false,
-      notificationTarget: 'kattaguravaiah00@gmail.com',
-      message: 'Inquiry received and logged.'
+    console.error('Error dispatching SMTP email:', err);
+    return res.status(500).json({
+      success: false,
+      delivered: false,
+      error: err.message || 'Failed to dispatch email via SMTP'
     });
   }
 });
