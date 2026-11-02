@@ -20,7 +20,7 @@ interface ResumeModalProps {
 }
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
-  const [activeTab, setActiveTab] = useState<'structured' | 'pdf'>('structured');
+  const [activeTab, setActiveTab] = useState<'structured' | 'pdf'>('pdf');
   const [copiedText, setCopiedText] = useState(false);
 
   if (!isOpen) return null;
@@ -87,8 +87,18 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         <div className="flex items-center justify-between px-6 py-2.5 border-b border-[#202020] bg-[#141414]">
           <div className="flex items-center gap-2">
             <button
+              onClick={() => setActiveTab('pdf')}
+              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors cursor-pointer ${
+                activeTab === 'pdf'
+                  ? 'bg-[#D41514] text-white font-bold'
+                  : 'text-[#8E8D8C] hover:text-[#CDCBCA]'
+              }`}
+            >
+              Original PDF Preview
+            </button>
+            <button
               onClick={() => setActiveTab('structured')}
-              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors ${
+              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors cursor-pointer ${
                 activeTab === 'structured'
                   ? 'bg-[#D41514] text-white font-bold'
                   : 'text-[#8E8D8C] hover:text-[#CDCBCA]'
@@ -96,21 +106,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             >
               Structured Document View
             </button>
-            <button
-              onClick={() => setActiveTab('pdf')}
-              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors ${
-                activeTab === 'pdf'
-                  ? 'bg-[#D41514] text-white font-bold'
-                  : 'text-[#8E8D8C] hover:text-[#CDCBCA]'
-              }`}
-            >
-              Original PDF Frame
-            </button>
           </div>
 
           <button
             onClick={handleCopySummary}
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-[#8E8D8C] hover:text-[#CDCBCA]"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-[#8E8D8C] hover:text-[#CDCBCA] cursor-pointer"
           >
             {copiedText ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
             <span>Copy Brief</span>
@@ -120,12 +120,25 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         {/* Content Area */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-8">
           {activeTab === 'pdf' ? (
-            <div className="w-full h-[65vh] rounded-xl border border-[#222222] bg-[#161616] overflow-hidden flex flex-col items-center justify-center">
-              <iframe
-                src={`${PORTFOLIO_DATA.personal.resumePath}#toolbar=0`}
-                className="w-full h-full border-none"
-                title="Resume PDF"
-              />
+            <div className="w-full h-[68vh] rounded-xl border border-[#222222] bg-[#161616] overflow-hidden flex flex-col items-center justify-center">
+              <object
+                data={`${PORTFOLIO_DATA.personal.resumePath}#toolbar=1`}
+                type="application/pdf"
+                className="w-full h-full"
+              >
+                <div className="flex flex-col items-center justify-center p-6 text-center text-[#CDCBCA] gap-3">
+                  <FileText className="w-10 h-10 text-[#D41514]" />
+                  <p className="text-sm">Your browser does not support inline PDF preview.</p>
+                  <a
+                    href={PORTFOLIO_DATA.personal.resumePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-lg bg-[#D41514] text-white text-xs font-mono font-bold"
+                  >
+                    Open PDF in New Tab ↗
+                  </a>
+                </div>
+              </object>
             </div>
           ) : (
             <div className="flex flex-col gap-6 max-w-3xl mx-auto">
